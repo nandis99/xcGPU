@@ -1,0 +1,1121 @@
+==========================================================================================================
+==========================================================================================================
+			Welcome to the Open Source program DFT-FE version	1.1.0-pre		        
+This is a C++ code for materials modeling from first principles using Kohn-Sham density functional theory.
+This is a real-space code for periodic, semi-periodic and non-periodic pseudopotential
+and all-electron calculations, and is based on adaptive finite-element discretization.
+For further details, and citing, please refer to our website: https://sites.google.com/umich.edu/dftfe
+==========================================================================================================
+ DFT-FE Mentors and Development leads (alphabetically) :									
+														
+ Sambit Das               - University of Michigan, USA
+ Vikram Gavini            - University of Michigan, USA
+ Phani Motamarri          - Indian Institute of Science, India
+ (A complete list of the many authors that have contributed to DFT-FE can be found in the authors file)
+==========================================================================================================
+ 	     Copyright (c) 2017-2025 The Regents of the University of Michigan and DFT-FE authors         
+ 			DFT-FE is published under [LGPL v2.1 or newer] 				
+==========================================================================================================
+==========================================================================================================
+ DFT-FE branch: xcGPU, commit: f0589bd3a05fe88e130340431478ab373c6ff5bd
+ compiled with GPU support, using CUDA, with OpenMP support, with 64 bit integers, and without HIGHERQUAD_PSP
+==========================================================================================================
+set RESTART        = false
+set RESTART FOLDER = restartFolder
+set SOLVER MODE    = GS
+set USE GPU        = false
+set VERBOSITY      = 4
+subsection NEB
+  set ALLOW IMAGE FREEZING             = false
+  set BFGS STEP METHOD                 = QN
+  set ION RELAX FLAGS FILE             = 
+  set LBFGS HISTORY                    = 5
+  set MAXIMUM ION UPDATE STEP          = 0.5
+  set MAXIMUM NUMBER OF NEB ITERATIONS = 100
+  set MAXIMUM SPRING CONSTANT          = 5e-3
+  set MAX LINE SEARCH ITER             = 5
+  set MINIMUM SPRING CONSTANT          = 2e-3
+  set NEB COORDINATES FILE             = 
+  set NEB DOMAIN VECTORS FILE          = 
+  set NEB OPT SOLVER                   = LBFGS
+  set NUMBER OF IMAGES                 = 7
+  set PATH THRESHOLD                   = 5e-4
+end
+set KEEP SCRATCH FOLDER                             = false
+set MEM OPT MODE                                    = false
+set REPRODUCIBLE OUTPUT                             = false
+set WRITE STRUCTURE ENERGY FORCES DATA POST PROCESS = false
+subsection Boundary conditions
+  set CONSTRAINTS FROM SERIAL DOFHANDLER = false
+  set CONSTRAINTS PARALLEL CHECK         = false
+  set FLOATING NUCLEAR CHARGES           = true
+  set MULTIPOLE BOUNDARY CONDITIONS      = false
+  set PERIODIC1                          = true
+  set PERIODIC2                          = true
+  set PERIODIC3                          = true
+  set POINT WISE DIRICHLET CONSTRAINT    = false
+  set SELF POTENTIAL RADIUS              = 0.0
+  set SMEARED NUCLEAR CHARGES            = true
+end
+subsection Brillouin zone k point sampling options
+  set USE GROUP SYMMETRY         = false
+  set USE TIME REVERSAL SYMMETRY = true
+  set kPOINT RULE FILE           = 
+  subsection Monkhorst-Pack (MP) grid generation
+    set SAMPLING POINTS 1 = 1
+    set SAMPLING POINTS 2 = 1
+    set SAMPLING POINTS 3 = 1
+    set SAMPLING SHIFT 1  = 0
+    set SAMPLING SHIFT 2  = 0
+    set SAMPLING SHIFT 3  = 0
+  end
+end
+subsection DFT functional parameters
+  set AUX BASIS DATA                                    = 
+  set AUX BASIS TYPE                                    = FE
+  set EXCHANGE CORRELATION TYPE                         = GGA-PBE
+  set MODEL XC INPUT FILE                               = 
+  set NET CHARGE                                        = 0.0
+  set PSEUDOPOTENTIAL CALCULATION                       = true
+  set PSEUDOPOTENTIAL FILE NAMES LIST                   = pseudo.inp
+  set PSEUDO TESTS FLAG                                 = false
+  set PSP CUTOFF IMAGE CHARGES                          = 15.0
+  set SPIN POLARIZATION                                 = 0
+  set TOTAL MAGNETIZATION                               = 0.0
+  set USE ATOMIC MAGNETIZATION GUESS FOR CONSTRAINT MAG = false
+  set USE LIBXC FOR XC FUNCTIONAL EVALUATION            = false
+  subsection CONFINING POTENTIAL parameters
+    set APPLY CONFINING POTENTIAL = false
+    set C PARAM                   = 1.0
+    set INNER RADIUS              = 17.0
+    set OUTER RADIUS              = 20.0
+    set W PARAM                   = 1.0
+  end
+  subsection Dispersion Correction
+    set CN CUTOFF                  = 40.0
+    set D3 ATM                     = false
+    set D3 DAMPING TYPE            = 3
+    set D4 MBD                     = false
+    set DAMPING PARAMETERS FILE    = 
+    set DISPERSION CORRECTION TYPE = 0
+    set THREE BODY CUTOFF          = 40.0
+    set TWO BODY CUTOFF            = 94.8683298050514
+  end
+  subsection Hubbard Parameters
+    set HUBBARD PARAMETERS FILE = 
+  end
+end
+subsection Finite element mesh parameters
+  set DENSITY QUADRATURE RULE         = 5
+  set POLYNOMIAL ORDER                = 3
+  set POLYNOMIAL ORDER DENSITY NODAL  = 0
+  set POLYNOMIAL ORDER ELECTROSTATICS = 0
+  subsection Auto mesh generation parameters
+    set ATOM BALL RADIUS                  = 4
+    set AUTO ADAPT BASE MESH SIZE         = true
+    set BASE MESH SIZE                    = 0.0
+    set ERROR ESTIMATE WAVEFUNCTIONS      = 5
+    set GAUSSIAN CONSTANT FORCE GENERATOR = 0.75
+    set GAUSSIAN ORDER FORCE GENERATOR    = 4.0
+    set GAUSSIAN ORDER MOVE MESH TO ATOMS = 4.0
+    set INNER ATOM BALL RADIUS            = 0.0
+    set MESH ADAPTION                     = false
+    set MESH SIZES FILE                   = 
+    set MESH SIZE AROUND ATOM             = 1.8
+    set MESH SIZE AT ATOM                 = 0.0
+    set NUM LEVELS                        = 10
+    set TOLERANCE FOR MESH ADAPTION       = 1
+    set TOP FRAC                          = 0.1
+    set USE FLAT TOP GENERATOR            = false
+  end
+end
+subsection FunctionalTest
+  set TEST NAME = 
+end
+subsection GPU
+  set AUTO GPU BLOCK SIZES         = true
+  set FINE GRAINED GPU TIMINGS     = false
+  set SUBSPACE ROT FULL CPU MEM    = true
+  set USE DCCL                     = false
+  set USE ELPA GPU KERNEL          = false
+  set USE GPUDIRECT MPI ALL REDUCE = false
+end
+subsection Geometry
+  set ATOMIC COORDINATES FILE      = coordinates.inp
+  set ATOMIC DISP COORDINATES FILE = 
+  set DOMAIN VECTORS FILE          = domainVectors.inp
+  set NATOMS                       = 4
+  set NATOM TYPES                  = 3
+  subsection Optimization
+    set BFGS STEP METHOD           = QN
+    set CELL CONSTRAINT TYPE       = 12
+    set CELL OPT SOLVER            = LBFGS
+    set CELL STRESS                = false
+    set FORCE TOL                  = 1e-4
+    set ION FORCE                  = false
+    set ION OPT SOLVER             = LBFGS
+    set ION RELAX FLAGS FILE       = 
+    set LBFGS HISTORY              = 5
+    set MAXIMUM CELL UPDATE STEP   = 0.1
+    set MAXIMUM ION UPDATE STEP    = 0.5
+    set MAXIMUM OPTIMIZATION STEPS = 300
+    set MAXIMUM STAGGERED CYCLES   = 300
+    set MAX LINE SEARCH ITER       = 5
+    set NON SELF CONSISTENT FORCE  = false
+    set OPTIMIZATION MODE          = ION
+    set REUSE DENSITY              = 1
+    set REUSE WFC                  = true
+    set STRESS TOL                 = 1e-6
+    set USE PRECONDITIONER         = false
+  end
+end
+subsection Helmholtz problem parameters
+  set ABSOLUTE TOLERANCE HELMHOLTZ = 1e-10
+  set MAXIMUM ITERATIONS HELMHOLTZ = 10000
+end
+subsection Molecular Dynamics
+  set ATOMIC MASSES FILE          = 
+  set BOMD                        = false
+  set EXTRAPOLATE DENSITY         = 0
+  set MAX JACOBIAN RATIO FACTOR   = 1.5
+  set MAX WALL TIME               = 2592000.0
+  set NUMBER OF STEPS             = 1000
+  set STARTING TEMPERATURE        = 300.0
+  set TEMPERATURE CONTROLLER TYPE = NO_CONTROL
+  set THERMOSTAT TIME CONSTANT    = 100
+  set TIME STEP                   = 0.5
+  set TRACKING ATOMIC NO          = 0
+end
+subsection Parallelization
+  set BAND PARAL OPT           = true
+  set MPI ALLREDUCE BLOCK SIZE = 100.0
+  set NPBAND                   = 1
+  set NPKPT                    = 1
+end
+subsection Poisson problem parameters
+  set GPU MODE           = true
+  set MAXIMUM ITERATIONS = 20000
+  set TOLERANCE          = 1e-10
+  set VSELF GPU MODE     = true
+end
+subsection Post-processing Options
+  set DELTA ENERGY                       = 0.01
+  set DOS SMEAR TEMPERATURE              = 500
+  set PRINT KINETIC ENERGY               = false
+  set READ ATOMIC WFC PDOS FROM PSP FILE = false
+  set WRITE DENSITY FE MESH              = false
+  set WRITE DENSITY OF STATES            = false
+  set WRITE DENSITY QUAD DATA            = false
+  set WRITE LOCALIZATION LENGTHS         = false
+  set WRITE LOCAL DENSITY OF STATES      = false
+  set WRITE PROJECTED DENSITY OF STATES  = false
+  set WRITE WFC FE MESH                  = false
+end
+subsection SCF Checkpointing and Restart
+  set LOAD QUAD DATA        = false
+  set RESTART SP FROM NO SP = false
+  set SAVE QUAD DATA        = false
+end
+subsection SCF parameters
+  set ADAPT ANDERSON MIXING PARAMETER = false
+  set COMPUTE ENERGY EACH ITER        = false
+  set CONSTRAINT MAGNETIZATION        = false
+  set ENERGY TOLERANCE                = 1e-07
+  set KERKER MIXING PARAMETER         = 0.05
+  set MAXIMUM ITERATIONS              = 200
+  set MIXING HISTORY                  = 10
+  set MIXING METHOD                   = ANDERSON
+  set MIXING PARAMETER                = 0.0
+  set PURE STATE                      = false
+  set RESTA FERMI WAVEVECTOR          = 5.81
+  set RESTA SCREENING LENGTH          = 6.61
+  set SPIN MIXING ENHANCEMENT FACTOR  = 1.0
+  set STARTING WFC                    = RANDOM
+  set TEMPERATURE                     = 500
+  set TOLERANCE                       = 9e-1
+  set USE ENERGY RESIDUAL METRIC      = false
+  subsection Eigen-solver parameters
+    set ALGO                                                 = NORMAL
+    set ALLOW MULTIPLE PASSES POST FIRST SCF                 = true
+    set CHEBYSHEV FILTER TOLERANCE                           = 0.0
+    set CHEBYSHEV POLYNOMIAL DEGREE                          = 0
+    set CHEBYSHEV POLYNOMIAL DEGREE SCALING FACTOR FIRST SCF = 1.34
+    set CHEBY WFC BLOCK SIZE                                 = 200
+    set COMMUN PREC CHEBY                                    = STANDARD
+    set HIGHEST STATE OF INTEREST FOR CHEBYSHEV FILTERING    = 0
+    set NUMBER OF CORE EIGEN STATES FOR MIXED PREC RR        = 0
+    set NUMBER OF KOHN-SHAM WAVEFUNCTIONS                    = 0
+    set ORTHOGONALIZATION TYPE                               = Auto
+    set OVERLAP COMPUTE COMMUN CHEBY                         = true
+    set OVERLAP COMPUTE COMMUN ORTHO RR                      = true
+    set RESTRICT TO SINGLE FILTER PASS                       = false
+    set REUSE LANCZOS UPPER BOUND                            = false
+    set SCALAPACKPROCS                                       = 0
+    set SCALAPACK BLOCK SIZE                                 = 0
+    set SUBSPACE PROJ SHEP GPU                               = false
+    set SUBSPACE ROT DOFS BLOCK SIZE                         = 10000
+    set TENSOR OP TYPE SINGLE PREC CHEBY                     = FP32
+    set USE APPROXIMATE OVERLAP MATRIX                       = true
+    set USE ELPA                                             = true
+    set USE MIXED PREC CGS SR                                = false
+    set USE MIXED PREC COMMUN ONLY XTOX XTHX                 = false
+    set USE MIXED PREC RR_SR                                 = false
+    set USE MIXED PREC XTHX                                  = false
+    set USE MIXED PREC XTOX                                  = false
+    set USE RESIDUAL CHFSI                                   = true
+    set USE SINGLE PREC CHEBY                                = false
+    set WFC BLOCK SIZE                                       = 400
+  end
+  subsection LOW RANK DIELECM PRECOND
+    set ADAPTIVE RANK REL TOL            = 0.3
+    set BETA TOL                         = 0.1
+    set ESTIMATE JAC CONDITION NO        = false
+    set METHOD SUB TYPE                  = ADAPTIVE
+    set POISSON SOLVER ABS TOL           = 1e-6
+    set STARTING NORM LARGE DAMPING      = 2.0
+    set USE SINGLE PREC DENSITY RESPONSE = false
+  end
+end
+Setting ORTHOGONALIZATION TYPE=CGS for pseudopotential calculations 
+=================================MPI Parallelization=========================================
+Total number of MPI tasks: 1
+k-point parallelization processor groups: 1
+Band parallelization processor groups: 1
+Number of MPI tasks for finite-element domain decomposition: 1
+============================================================================================
+Threads per MPI task: 1
+number of atoms: 4
+number of atoms types: 3
+ Warning: User has requested the number of Kohn-Sham wavefunctions to be less than orequal to half the number of electrons in the system. Setting the Kohn-Sham wavefunctionsto half the number of electrons with a 20 percent buffer to avoid convergence issues inSCF iterations
+ Setting the number of Kohn-Sham wave functions to be 37
+
+Reading Pseudo-potential data for each atom from the list given in : pseudo.inp
+ Reading Pseudopotential File: Ba_ONCV_PBE-1.2.upf, with atomic number: 56, and has no nonlinear core-correction
+ Reading Pseudopotential File: Ti_ONCV_PBE-1.2.upf, with atomic number: 22, and has no nonlinear core-correction
+ Reading Pseudopotential File: O_ONCV_PBE-1.2.upf, with atomic number: 8, and has no nonlinear core-correction
+Scalapack Matrix created, row procs: 1
+Atomic system initialization, wall time: 1.15107s.
+-----------Simulation Domain bounding vectors (lattice vectors in fully periodic case)-------------
+v1 : 7.524889428259816881e+00 0.000000000000000000e+00 0.000000000000000000e+00
+v2 : 0.000000000000000000e+00 7.524889428259816881e+00 0.000000000000000000e+00
+v3 : 0.000000000000000000e+00 0.000000000000000000e+00 7.591029842621719759e+00
+-----------------------------------------------------------------------------------------
+-----Fractional coordinates of atoms------ 
+AtomId 0:  0.000000000000000000e+00 0.000000000000000000e+00 0.000000000000000000e+00
+AtomId 1:  5.000000000000000000e-01 5.000000000000000000e-01 5.000000000000000000e-01
+AtomId 2:  0.000000000000000000e+00 5.000000000000000000e-01 5.000000000000000000e-01
+AtomId 3:  5.000000000000000000e-01 0.000000000000000000e+00 5.000000000000000000e-01
+-----------------------------------------------------------------------------------------
+Number Image Charges  309
+-------------------k points cartesian coordinates and weights-----------------------------
+ [0.000000000000000000e+00, 0.000000000000000000e+00, 0.000000000000000000e+00] 1.000000000000000000e+00
+-----------------------------------------------------------------------------------------
+image charges and k point generation, wall time: 1.91261s.
+Minimum distance between atoms: 3.762444714129908441e+00
+Periodic Face Normals 1: 5.712166021234896363e+01 0.000000000000000000e+00 0.000000000000000000e+00
+Periodic Face Normals 2: 0.000000000000000000e+00 5.712166021234896363e+01 0.000000000000000000e+00
+Periodic Face Normals 3: 0.000000000000000000e+00 0.000000000000000000e+00 5.662396090753635036e+01
+Periodic Facepairs size: 48
+
+Coarse triangulation number of elements: 64
+Hanging node and periodic constraints parallel consistency achieved.
+Triangulation generation summary: 
+ num elements: 64, num refinement levels: 0, min element length: 1.881222357064953776e+00, max element length: 1.881222357064954664e+00
+ numParallelCells: 64
+Periodic Face Normals 1: 5.712166021234896363e+01 0.000000000000000000e+00 0.000000000000000000e+00
+Periodic Face Normals 2: 0.000000000000000000e+00 5.712166021234896363e+01 0.000000000000000000e+00
+Periodic Face Normals 3: 0.000000000000000000e+00 0.000000000000000000e+00 5.662396090753635036e+01
+Periodic Facepairs size: 48
+
+Coarse triangulation number of elements: 64
+Hanging node and periodic constraints parallel consistency achieved.
+Triangulation generation summary: 
+ num elements: 64, num refinement levels: 0, min element length: 1.881222357064953776e+00, max element length: 1.881222357064954664e+00
+ numParallelCells: 64
+mesh generation, wall time: 0.0114536s.
+
+Mesh generation completed, Current maximum memory usage across all processors: 4.484014080000000035e+02 MB.
+
+
+Inititialization of meshmovement class objects completed, Current maximum memory usage across all processors: 4.484014080000000035e+02 MB.
+
+
+Distributed dofs, Current maximum memory usage across all processors: 4.484014080000000035e+02 MB.
+
+
+Extracted indices, Current maximum memory usage across all processors: 4.487946239999999989e+02 MB.
+
+
+Created the basic constraint matrices, Current maximum memory usage across all processors: 4.495810559999999896e+02 MB.
+
+
+Force initUnmoved, Current maximum memory usage across all processors: 4.495810559999999896e+02 MB.
+
+X Functional: J. P. Perdew, K. Burke, and M. Ernzerhof.,  Phys. Rev. Lett. 77, 3865 (1996) (DOI 10.1103/PhysRevLett.77.3865)
+C Functional: J. P. Perdew, K. Burke, and M. Ernzerhof.,  Phys. Rev. Lett. 77, 3865 (1996) (DOI 10.1103/PhysRevLett.77.3865)
+unmoved setup, wall time: 0.00440824s.
+
+initUnmovedTriangulation completed, Current maximum memory usage across all processors: 4.503674879999999803e+02 MB.
+
+
+moveMeshToAtoms completed, Current maximum memory usage across all processors: 4.503674879999999803e+02 MB.
+
+
+Finite element mesh information
+-------------------------------------------------
+FE interpolating polynomial order for Kohn-Sham eigenvalue problem: 3
+FE interpolating polynomial order for electrostatics solve: 3
+FE interpolating polynomial order for nodal electron density computation: 5
+quadrature rule for electron density and kinetic energy density computation: 5
+number of elements: 64
+number of degrees of freedom for the Kohn-Sham eigenvalue problem : 2197
+Minimum mesh size: 1.881222357064953776e+00
+-------------------------------------------------
+
+-----------------------------------------------------------------------------
+Rough estimate of peak memory requirement (RAM) total: 5.026012479999999449e-01 GB.
+Rough estimate of peak memory requirement (RAM) per MPI task: 5.026012479999999449e-01 GB.
+DFT-FE Message: many of the memory optimizations implemented
+in DFT-FE are useful only for larger system sizes.
+-----------------------------------------------------------------------------
+
+Dofs distributed again, Current maximum memory usage across all processors: 4.503674879999999803e+02 MB.
+
+initBoundaryConditions: Time taken for creating dofhandler related objects: 1.113129000000157021e-03
+
+Created support points, Current maximum memory usage across all processors: 4.503674879999999803e+02 MB.
+
+
+Called force init moved, Current maximum memory usage across all processors: 4.503674879999999803e+02 MB.
+
+initBoundaryConditions: Time taken for force init moved: 9.709600000018525634e-05
+initBoundaryConditions: Time taken for matrix free reinit: 3.974506000000044281e-02
+
+Called matrix free reinit, Current maximum memory usage across all processors: 4.708147200000000225e+02 MB.
+
+Volume of the domain (Bohr^3): 4.298341770565363049e+02
+Determining the ball radius around the atom for nuclear self-potential solve... 
+...Adaptively set ball radius: 1.750000000000000000e+00
+DFT-FE warning: Tried to adaptively determine the ball radius for nuclear self-potential solve and was found to be less than 2.5, which can detoriate the accuracy of the KSDFT groundstate energy and forces. One approach to overcome this issue is to use a larger super cell with smallest periodic dimension greater than 5.0 (twice of 2.5), assuming an orthorhombic domain. If that is not feasible, you may need more h refinement of the finite element mesh around the atoms to achieve the desired accuracy.
+number bins: 4
+bin 0: number of global atoms: 1
+Reduced ball radius for setting boundary conditions taking hanging nodes into consideration: 1.750000000000000000e+00
+bin 1: number of global atoms: 1
+Reduced ball radius for setting boundary conditions taking hanging nodes into consideration: 1.750000000000000000e+00
+bin 2: number of global atoms: 1
+Reduced ball radius for setting boundary conditions taking hanging nodes into consideration: 1.750000000000000000e+00
+bin 3: number of global atoms: 1
+Reduced ball radius for setting boundary conditions taking hanging nodes into consideration: 1.750000000000000000e+00
+
+
++-------------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start              | 4.879e-02s |            |
+|                                                       |            |            |
+| Section                                   | no. calls |  wall time | % of total |
++-------------------------------------------+-----------+------------+------------+
+| create bins: find nodes inside atom balls |        18 | 2.646e-02s |  5.42e+01% |
+| create bins: initial overheads            |         1 | 6.218e-04s |  1.27e+00% |
+| create bins: local interaction maps       |        18 | 3.372e-04s |  6.91e-01% |
+| create bins: put in bins                  |         1 | 1.219e-05s | 0.000e+00% |
+| create bins: sanity check                 |         1 | 3.280e-03s |  6.72e+00% |
+| create bins: set boundary conditions      |         1 | 1.750e-02s |  3.59e+01% |
++-------------------------------------------+-----------+------------+------------+
+
+Create atom bins, wall time: 0.0493134s.
+updateAtomPositionsAndMoveMesh: initBoundaryConditions: Time taken for bins update: 4.932562600000034436e-02
+initBoundaryConditions: Time taken for initpRefinedObjects: 8.471952600000021150e-02
+moved setup, wall time: 0.125976s.
+
+initBoundaryConditions completed, Current maximum memory usage across all processors: 4.959805440000000090e+02 MB.
+
+
+Overloaded constraint matrices initialized, Current maximum memory usage across all processors: 4.963737600000000043e+02 MB.
+
+
+Setting initial guess for wavefunctions....
+
+Created flattened array eigenvectors before update ghost values, Current maximum memory usage across all processors: 4.963737600000000043e+02 MB.
+
+Number of wavefunctions generated randomly to be used as initial guess for starting the SCF : 37
+=============================================================================================================================
+number of electrons: 3.400000000000000000e+01
+number of eigen values: 37
+=============================================================================================================================
+initialize wave functions, wall time: 0.00171313s.
+
+Created flattened array eigenvectors, Current maximum memory usage across all processors: 4.967669759999999997e+02 MB.
+
+
+Reading initial guess for electron-density.....
+initial total charge before normalizing to number of electrons: 3.351136739305573542e+01
+Initial total charge after normalization: 3.399999999999966604e+01
+initialize density, wall time: 0.0493621s.
+
+initRho called, Current maximum memory usage across all processors: 4.967669759999999997e+02 MB.
+
+init electronic fields, wall time: 0.0514001s.
+
+initElectronicFields completed, Current maximum memory usage across all processors: 4.967669759999999997e+02 MB.
+
+
+Pseudopotential initalization....
+initPseudoPotentialAll: Time taken for initializing core density for non-linear core correction: 6.799999985318549989e-08
+ONCVclass: Time taken for computeSparseStructureNonLocalProjectors: 1.045245880000003069e-01
+ONCVclass: Time taken for non local psp init: 1.983390433000000286e+00
+psp init, wall time: 2.08798s.
+
+initPseudopotential completed, Current maximum memory usage across all processors: 5.110783999999999878e+02 MB.
+
+init: Time taken for kohnShamDFTOperator class initialization: 2.000750000004103413e-04
+kohnShamDFTOperator init, wall time: 0.000210746s.
+KSDFT problem initialization, wall time: 4.21973s.
+ Time taken for vself field initialization for current bin: 3.703090000000130999e-03
+ Time taken for vself solver problem init for current bin: 1.400906999999840252e-03
+Time for compute rhs: 1.848105999999738458e-03
+
+initial abs. residual: 3.201723689436060560e+00 , current abs. residual: 3.753590284470103425e-18 , nsteps: 13 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.446457000000123116e-03
+ Time taken for vself solver problem init for current bin: 6.108310000003669415e-04
+Time for compute rhs: 2.169228000000522627e-03
+
+initial abs. residual: 8.435028411482695887e+00 , current abs. residual: 1.577346151561150393e-16 , nsteps: 12 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.206515999999879796e-03
+ Time taken for vself solver problem init for current bin: 5.983110000000735340e-04
+Time for compute rhs: 1.351920000000284006e-03
+
+initial abs. residual: 8.435028411482694111e+00 , current abs. residual: 1.113924802079339170e-16 , nsteps: 12 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.200670000000236826e-03
+ Time taken for vself solver problem init for current bin: 6.184860000004732683e-04
+Time for compute rhs: 1.333637000000109651e-03
+
+initial abs. residual: 8.390557086939157472e+00 , current abs. residual: 1.930627706823283408e-16 , nsteps: 8 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 8.125119999995433773e-04
+ Time taken for vself self energy for current bin: 7.797329999998936501e-04
+ Time taken for vself field initialization for current bin: 2.343020999999723131e-03
+ Time taken for vself solver problem init for current bin: 5.647189999997692667e-04
+Time for compute rhs: 4.252380000000499649e-04
+
+initial abs. residual: 3.842068427323273028e+00 , current abs. residual: 9.056951568013847962e-18 , nsteps: 13 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.425284999999831825e-03
+ Time taken for vself solver problem init for current bin: 5.861380000000693258e-04
+Time for compute rhs: 1.290116999999924019e-03
+
+initial abs. residual: 1.012203409377923613e+01 , current abs. residual: 2.507094759083335750e-16 , nsteps: 12 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.212412999999301633e-03
+ Time taken for vself solver problem init for current bin: 5.794669999996671095e-04
+Time for compute rhs: 1.339197000000069693e-03
+
+initial abs. residual: 1.012203409377923613e+01 , current abs. residual: 1.120306517581768481e-16 , nsteps: 12 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.216099999999720183e-03
+ Time taken for vself solver problem init for current bin: 6.085870000003268387e-04
+Time for compute rhs: 1.297993999999746961e-03
+
+initial abs. residual: 1.006866850432699145e+01 , current abs. residual: 3.240005112613248830e-16 , nsteps: 8 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 8.173569999998520075e-04
+ Time taken for vself self energy for current bin: 7.281119999991148006e-04
+ Time taken for vself field initialization for current bin: 2.212914000000232306e-03
+ Time taken for vself solver problem init for current bin: 5.652879999997750815e-04
+Time for compute rhs: 4.007200000000210593e-04
+
+initial abs. residual: 1.921034213661636070e+00 , current abs. residual: 2.383188461692463379e-18 , nsteps: 13 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.398413000000431339e-03
+ Time taken for vself solver problem init for current bin: 6.011270000003676728e-04
+Time for compute rhs: 1.287145000000045059e-03
+
+initial abs. residual: 5.061017046889616289e+00 , current abs. residual: 1.194916129076334456e-16 , nsteps: 12 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.204615999999880671e-03
+ Time taken for vself solver problem init for current bin: 6.143700000000862360e-04
+Time for compute rhs: 1.283477999999504959e-03
+
+initial abs. residual: 5.061017046889615401e+00 , current abs. residual: 1.251743503276334843e-16 , nsteps: 12 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.224034999999901174e-03
+ Time taken for vself solver problem init for current bin: 6.234470000006098189e-04
+Time for compute rhs: 1.280715000000043347e-03
+
+initial abs. residual: 5.034334252163493950e+00 , current abs. residual: 1.639833796409865543e-16 , nsteps: 8 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 8.132739999995308722e-04
+ Time taken for vself self energy for current bin: 7.429769999998114827e-04
+ Time taken for vself field initialization for current bin: 2.180732999999435151e-03
+ Time taken for vself solver problem init for current bin: 5.732659999999611955e-04
+Time for compute rhs: 3.927930000005019906e-04
+
+initial abs. residual: 1.921034213661636070e+00 , current abs. residual: 5.350032470859955369e-18 , nsteps: 13 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.397401999999381417e-03
+ Time taken for vself solver problem init for current bin: 5.977210000001065282e-04
+Time for compute rhs: 1.286305999999903804e-03
+
+initial abs. residual: 5.061017046889617177e+00 , current abs. residual: 6.578954703430742799e-17 , nsteps: 12 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.203610000000132629e-03
+ Time taken for vself solver problem init for current bin: 6.132659999993350652e-04
+Time for compute rhs: 1.285751000000168176e-03
+
+initial abs. residual: 5.061017046889617177e+00 , current abs. residual: 5.546636784540194524e-17 , nsteps: 12 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 1.206908999999534160e-03
+ Time taken for vself solver problem init for current bin: 6.055589999993671313e-04
+Time for compute rhs: 1.283911999999887144e-03
+
+initial abs. residual: 5.034334252163494838e+00 , current abs. residual: 1.264055992243465200e-16 , nsteps: 8 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 8.113960000004638573e-04
+ Time taken for vself self energy for current bin: 7.135619999996123397e-04
+Nuclear self-potential solve, wall time: 0.074814s.
+Nuclear self-potential solve, wall time: 0.074837s.
+initLocalPSP, max psp tail considered: 6.000000000000000000e+00
+initLocalPSP: Time taken for init1: 6.641133999999659920e-03
+initLocalPSP: Time taken for init2: 1.298754589999999709e-01
+initLocalPSP: Time taken for init3: 7.508532899999931232e-02
+Init local PSP, wall time: 0.212318s.
+
+************************Begin Self-Consistent-Field Iteration:  1 ***********************
+density mixing, wall time: 7.53e-07s.
+
+Poisson solve for total electrostatic potential (rhoIn+b): Time for compute rhs: 2.933929000000112808e-03
+
+initial abs. residual: 5.202731742924759928e+00 , current abs. residual: 8.313925436526313754e-11 , nsteps: 70 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 5.974584999999699164e-03
+phiTot solve, wall time: 0.00898493s.
+VEff Computation, wall time: 0.00348152s.
+Beginning Chebyshev filter pass 1 for spin 1
+Hamiltonian Matrix Computation, wall time: 0.0227191s.
+kPoint: 0
+Lanczos k-step Upper Bound, wall time: 0.0115962s.
+upper bound of unwanted spectrum:  2.6000000000e+01
+lower bound of unwanted spectrum:  9.2310423305e+01
+Chebyshev polynomial degree: 32
+
+
+Before starting chebyshev filtering, Current maximum memory usage across all processors: 5.476474879999999530e+02 MB.
+
+
+During blocked chebyshev filtering, Current maximum memory usage across all processors: 5.476474879999999530e+02 MB.
+
+Chebyshev filtering on CPU, wall time: 0.0918396s.
+ChebyShev Filtering Done: 
+
+Inside Blocked XtOX with parallel projected Overlap matrix, Current maximum memory usage across all processors: 5.476474879999999530e+02 MB.
+
+
+Inside Blocked susbpace rotation, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+
+
++--------------------------------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start                                 | 5.366e-03s |            |
+|                                                                          |            |            |
+| Section                                                      | no. calls |  wall time | % of total |
++--------------------------------------------------------------+-----------+------------+------------+
+| Broadcast eigvec and eigenvalues across band groups, RR step |         1 | 2.320e-06s | 0.000e+00% |
+| ELPA eigen decomp, RR step                                   |         1 | 1.188e-03s |  2.21e+01% |
+| X^{T}={QConjPrime}^{C}*LConj^{-1}*X^{T}, RR step             |         1 | 3.710e-04s |  6.91e+00% |
+| XtHX and XtOX, RR GEP step                                   |         1 | 3.771e-03s |  7.03e+01% |
++--------------------------------------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 7.543353466186298872e-01
+eigen vector 1: 6.820842381733485116e-01
+eigen vector 2: 7.994496423139836327e-01
+eigen vector 3: 8.585106925821098800e-01
+eigen vector 4: 7.688598250949453261e-01
+eigen vector 5: 7.698815149660891421e-01
+eigen vector 6: 9.626591409464901883e-01
+eigen vector 7: 8.534557841060715910e-01
+eigen vector 8: 8.328102807338695346e-01
+eigen vector 9: 7.931693157997283805e-01
+eigen vector 10: 6.963625576490594105e-01
+eigen vector 11: 7.820625902160319720e-01
+eigen vector 12: 8.183439580695527349e-01
+eigen vector 13: 8.266526273207667197e-01
+eigen vector 14: 8.668285947940697067e-01
+eigen vector 15: 8.954730864412948632e-01
+eigen vector 16: 9.156309230710656388e-01
+eigen vector 17: 8.993222876025381840e-01
+eigen vector 18: 9.366914651684269399e-01
+eigen vector 19: 8.690045533785027976e-01
+eigen vector 20: 8.426900846177040050e-01
+eigen vector 21: 8.818573590025607922e-01
+eigen vector 22: 8.827485680965037051e-01
+eigen vector 23: 8.564423956046688380e-01
+eigen vector 24: 9.037716246708388246e-01
+eigen vector 25: 8.770240510115744348e-01
+eigen vector 26: 8.082147810060897886e-01
+eigen vector 27: 9.122571183093736158e-01
+eigen vector 28: 9.026881832405776462e-01
+eigen vector 29: 9.962857641796720731e-01
+eigen vector 30: 9.433292560051442788e-01
+eigen vector 31: 8.469912121184707265e-01
+eigen vector 32: 9.877014130923329471e-01
+eigen vector 33: 9.773603639580003000e-01
+eigen vector 34: 1.074152448869297727e+00
+eigen vector 35: 8.891125064648407461e-01
+eigen vector 36: 9.793910065254683994e-01
+
+EigenVector Residual Computation Done: 
+
+
+After all steps of subspace iteration, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+eigen value   0: -1.470746095356887828e+00
+eigen value   1: -5.306611584683140759e-01
+eigen value   2: -4.587725795299821274e-01
+eigen value   3: -4.086991500891309914e-01
+eigen value   4: -2.702405831740362641e-01
+eigen value   5: -7.237049965058676981e-02
+eigen value   6: 1.533661858310230164e-01
+eigen value   7: 3.978264627214235238e-01
+eigen value   8: 4.118850928565431779e-01
+eigen value   9: 4.823808071873096903e-01
+eigen value  10: 6.020212423270341340e-01
+eigen value  11: 6.573887425347942903e-01
+eigen value  12: 6.850314969562535383e-01
+eigen value  13: 7.576534757324041580e-01
+eigen value  14: 7.830638822471047700e-01
+eigen value  15: 8.930764316094838007e-01
+eigen value  16: 9.481814255869552843e-01
+eigen value  17: 1.013663628647677228e+00
+eigen value  18: 1.070260726654289174e+00
+eigen value  19: 1.131099564163640991e+00
+eigen value  20: 1.220215621240135162e+00
+eigen value  21: 1.280526819262074234e+00
+eigen value  22: 1.321330106461001019e+00
+eigen value  23: 1.400914769523714742e+00
+eigen value  24: 1.419117363390745901e+00
+eigen value  25: 1.440081646428221340e+00
+eigen value  26: 1.553408866286875023e+00
+eigen value  27: 1.686293121210613810e+00
+eigen value  28: 1.738807631875968429e+00
+eigen value  29: 1.754664902013725492e+00
+eigen value  30: 1.823014341660627924e+00
+eigen value  31: 1.863448550308814067e+00
+eigen value  32: 1.970310723435624967e+00
+eigen value  33: 2.006113786309346114e+00
+eigen value  34: 2.107930295367427487e+00
+eigen value  35: 2.159824806936273323e+00
+eigen value  36: 2.218221905830373597e+00
+
+Chebyshev solve, wall time: 0.112463s.
+Fermi energy constraint residual (Newton-Raphson): 2.913225216616410762e-13
+Fermi energy                                     : 9.809225273142746504e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 9.626591409464901883e-01
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:9.626591409464901883e-01
+Beginning Chebyshev filter pass 2 for spin 1
+kPoint: 0
+Lanczos k-step Upper Bound, wall time: 0.0108151s.
+upper bound of unwanted spectrum:  2.6000000000e+01
+lower bound of unwanted spectrum:  2.2182219058e+00
+Chebyshev polynomial degree: 32
+
+
+Before starting chebyshev filtering, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+
+During blocked chebyshev filtering, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+Chebyshev filtering on CPU, wall time: 0.0935162s.
+ChebyShev Filtering Done: 
+
+Inside Blocked XtOX with parallel projected Overlap matrix, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+
+Inside Blocked susbpace rotation, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+
+
++--------------------------------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start                                 | 4.734e-03s |            |
+|                                                                          |            |            |
+| Section                                                      | no. calls |  wall time | % of total |
++--------------------------------------------------------------+-----------+------------+------------+
+| Broadcast eigvec and eigenvalues across band groups, RR step |         1 | 8.600e-07s | 0.000e+00% |
+| ELPA eigen decomp, RR step                                   |         1 | 7.344e-04s |  1.55e+01% |
+| X^{T}={QConjPrime}^{C}*LConj^{-1}*X^{T}, RR step             |         1 | 3.273e-04s |  6.91e+00% |
+| XtHX and XtOX, RR GEP step                                   |         1 | 3.646e-03s |  7.70e+01% |
++--------------------------------------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 1.092256157576151427e-05
+eigen vector 1: 9.574484009483835018e-05
+eigen vector 2: 1.192790093800656203e-04
+eigen vector 3: 1.941308743613402883e-04
+eigen vector 4: 2.263372245425026316e-04
+eigen vector 5: 5.139054783429799654e-04
+eigen vector 6: 4.731569005139832818e-04
+eigen vector 7: 2.709929409355776083e-03
+eigen vector 8: 1.696978123454248805e-03
+eigen vector 9: 3.390764412411745917e-03
+eigen vector 10: 4.699518035671648546e-03
+eigen vector 11: 1.359602213451427226e-02
+eigen vector 12: 8.014491094780345354e-03
+eigen vector 13: 5.515165911830087822e-03
+eigen vector 14: 6.536373870738559216e-03
+eigen vector 15: 9.870882865336027753e-03
+eigen vector 16: 1.383474852399180915e-02
+eigen vector 17: 1.101713051306486835e-02
+eigen vector 18: 1.136810301601460550e-02
+eigen vector 19: 1.609202782084545938e-02
+eigen vector 20: 2.257784704377874610e-02
+eigen vector 21: 1.497462634371234461e-02
+eigen vector 22: 2.618858278306608264e-02
+eigen vector 23: 3.835159839413010419e-02
+eigen vector 24: 4.410905735244457365e-02
+eigen vector 25: 2.778961249397727748e-02
+eigen vector 26: 1.276983294118963150e-02
+eigen vector 27: 4.264654172129395127e-02
+eigen vector 28: 3.436576047261868244e-02
+eigen vector 29: 4.410695739456301639e-02
+eigen vector 30: 7.567913103273174458e-02
+eigen vector 31: 5.860889930122453045e-02
+eigen vector 32: 5.923310137638932577e-02
+eigen vector 33: 8.098938874407411725e-02
+eigen vector 34: 7.056014567780907742e-02
+eigen vector 35: 5.713845556452522290e-02
+eigen vector 36: 6.109669099225336492e-02
+
+EigenVector Residual Computation Done: 
+
+
+After all steps of subspace iteration, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+eigen value   0: -1.666338134343715804e+00
+eigen value   1: -7.434703938548472557e-01
+eigen value   2: -7.434703909562931923e-01
+eigen value   3: -7.274619401623018122e-01
+eigen value   4: -5.727400438356365919e-01
+eigen value   5: -3.803567532253210315e-01
+eigen value   6: -3.678720897585180394e-01
+eigen value   7: -3.218282895307765512e-02
+eigen value   8: -2.616619036035973400e-02
+eigen value   9: -2.615849024860885524e-02
+eigen value  10: 2.490624212575489049e-01
+eigen value  11: 2.492590730601149940e-01
+eigen value  12: 2.801442087290696992e-01
+eigen value  13: 2.844641886162511124e-01
+eigen value  14: 3.075788227816035336e-01
+eigen value  15: 3.076563902975640863e-01
+eigen value  16: 3.648262473116256066e-01
+eigen value  17: 4.546771835236401160e-01
+eigen value  18: 4.664096799149551886e-01
+eigen value  19: 4.666146535508656767e-01
+eigen value  20: 5.024475797744082373e-01
+eigen value  21: 5.133766272019117949e-01
+eigen value  22: 6.621037240835616622e-01
+eigen value  23: 6.643348296990230217e-01
+eigen value  24: 6.810331531282837192e-01
+eigen value  25: 7.537960051339414047e-01
+eigen value  26: 7.626874086167779732e-01
+eigen value  27: 7.672682020082669530e-01
+eigen value  28: 7.734862353985454408e-01
+eigen value  29: 8.083890642373671165e-01
+eigen value  30: 8.321884163555232083e-01
+eigen value  31: 8.624631392344788150e-01
+eigen value  32: 9.973922588585256710e-01
+eigen value  33: 1.032737812090326557e+00
+eigen value  34: 1.084126991988390021e+00
+eigen value  35: 1.125894890165225704e+00
+eigen value  36: 1.163419142779143600e+00
+
+Chebyshev solve, wall time: 0.112636s.
+Fermi energy constraint residual (Newton-Raphson): 6.163247689983109012e-11
+Fermi energy                                     : 4.047318249473016438e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 1.383474852399180915e-02
+Fermi Energy computed: 4.047318249473016438e-01
+Time for compute rho on CPU: 5.067283000000699644e-03
+compute rho, wall time: 0.00582801s.
+
+number of electrons: 3.350733548997580158e+01
+***********************Self-Consistent-Field Iteration:  1 complete**********************
+Wall time for the above scf iteration: 2.690682819999999920e-01 seconds
+Number of Chebyshev filtered subspace iterations: 2
+
+************************Begin Self-Consistent-Field Iteration:  2 ***********************
+Anderson mixing parameter for Rho: 2.000000000000000111e-01
+ANDERSON mixing, L2 norm of electron-density difference: 6.883135467433756371e-01
+density mixing, wall time: 0.000460355s.
+
+Poisson solve for total electrostatic potential (rhoIn+b): Time for compute rhs: 1.138279999999269876e-04
+
+initial abs. residual: 6.499532883648594106e-02 , current abs. residual: 6.008068025144495949e-11 , nsteps: 63 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 5.416893000000477798e-03
+phiTot solve, wall time: 0.00558226s.
+VEff Computation, wall time: 0.00354259s.
+Beginning Chebyshev filter pass 1 for spin 1
+Hamiltonian Matrix Computation, wall time: 0.00627323s.
+kPoint: 0
+Lanczos k-step Upper Bound, wall time: 0.0105447s.
+upper bound of unwanted spectrum:  2.6000000000e+01
+lower bound of unwanted spectrum:  1.1634191428e+00
+Chebyshev polynomial degree: 24
+
+
+Before starting chebyshev filtering, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+
+During blocked chebyshev filtering, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+Chebyshev filtering on CPU, wall time: 0.0701589s.
+ChebyShev Filtering Done: 
+
+Inside Blocked XtOX with parallel projected Overlap matrix, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+
+Inside Blocked susbpace rotation, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+
+
++--------------------------------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start                                 | 4.783e-03s |            |
+|                                                                          |            |            |
+| Section                                                      | no. calls |  wall time | % of total |
++--------------------------------------------------------------+-----------+------------+------------+
+| Broadcast eigvec and eigenvalues across band groups, RR step |         1 | 8.290e-07s | 0.000e+00% |
+| ELPA eigen decomp, RR step                                   |         1 | 6.992e-04s |  1.46e+01% |
+| X^{T}={QConjPrime}^{C}*LConj^{-1}*X^{T}, RR step             |         1 | 3.195e-04s |  6.68e+00% |
+| XtHX and XtOX, RR GEP step                                   |         1 | 3.738e-03s |  7.81e+01% |
++--------------------------------------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 7.256076124599527574e-09
+eigen vector 1: 1.213329569951787363e-07
+eigen vector 2: 9.963358945815143447e-08
+eigen vector 3: 2.068229629232362594e-07
+eigen vector 4: 3.938789181710009004e-08
+eigen vector 5: 2.941157283851151802e-07
+eigen vector 6: 4.475860914073626630e-07
+eigen vector 7: 1.082628561866008148e-06
+eigen vector 8: 9.619671148331591734e-07
+eigen vector 9: 7.427775507214281168e-07
+eigen vector 10: 1.333543477332267559e-05
+eigen vector 11: 1.425111966639671698e-05
+eigen vector 12: 1.059351891116011969e-05
+eigen vector 13: 1.779434993671700314e-05
+eigen vector 14: 1.673262298201118447e-05
+eigen vector 15: 1.239840676535896709e-05
+eigen vector 16: 4.320357951784334680e-05
+eigen vector 17: 8.787511481141851858e-05
+eigen vector 18: 1.083279176905945575e-04
+eigen vector 19: 7.561832893264085686e-05
+eigen vector 20: 9.395218058086086336e-05
+eigen vector 21: 9.580831174341886841e-05
+eigen vector 22: 4.647820176539503058e-04
+eigen vector 23: 3.162610753067552163e-04
+eigen vector 24: 4.612879034076271928e-04
+eigen vector 25: 8.967529191857983402e-04
+eigen vector 26: 2.087566985278884856e-03
+eigen vector 27: 4.978337921908320730e-04
+eigen vector 28: 6.334166173098599488e-04
+eigen vector 29: 5.952182105673113144e-04
+eigen vector 30: 1.188506830287367486e-03
+eigen vector 31: 2.254352235358607869e-03
+eigen vector 32: 8.445896271420064855e-03
+eigen vector 33: 1.437194076504828659e-02
+eigen vector 34: 2.450290440931258279e-02
+eigen vector 35: 1.784999278522092156e-02
+eigen vector 36: 1.853866319926566683e-02
+
+EigenVector Residual Computation Done: 
+
+
+After all steps of subspace iteration, Current maximum memory usage across all processors: 5.500067840000000388e+02 MB.
+
+eigen value   0: -1.830360295822970329e+00
+eigen value   1: -8.800946298394601852e-01
+eigen value   2: -8.800294791772876879e-01
+eigen value   3: -8.679852652113648759e-01
+eigen value   4: -5.612624803444413724e-01
+eigen value   5: -3.659488915608604676e-01
+eigen value   6: -3.518739142876109449e-01
+eigen value   7: -1.994415381716341945e-02
+eigen value   8: -1.527140069590673770e-02
+eigen value   9: -1.517152870547266996e-02
+eigen value  10: 2.512915139038179868e-01
+eigen value  11: 2.516639639012882013e-01
+eigen value  12: 2.982540332404413075e-01
+eigen value  13: 2.992833477092192718e-01
+eigen value  14: 3.213798488445882007e-01
+eigen value  15: 3.217113126918629828e-01
+eigen value  16: 3.562127747183966853e-01
+eigen value  17: 3.767951028794008783e-01
+eigen value  18: 3.863765290758787163e-01
+eigen value  19: 3.864473496593411883e-01
+eigen value  20: 5.144537807579747657e-01
+eigen value  21: 5.261945289589458064e-01
+eigen value  22: 6.549890751264679789e-01
+eigen value  23: 6.551194922822222155e-01
+eigen value  24: 6.705019905453957207e-01
+eigen value  25: 7.152403022813637046e-01
+eigen value  26: 7.478600902295452491e-01
+eigen value  27: 7.632818157353129518e-01
+eigen value  28: 7.634116894606420844e-01
+eigen value  29: 7.801251464303370353e-01
+eigen value  30: 7.882161423800090327e-01
+eigen value  31: 8.233128149188507772e-01
+eigen value  32: 9.893481709714293526e-01
+eigen value  33: 9.906006276949974598e-01
+eigen value  34: 1.031686716008529014e+00
+eigen value  35: 1.083566065026856373e+00
+eigen value  36: 1.101499548907928006e+00
+
+Chebyshev solve, wall time: 0.0890501s.
+Fermi energy constraint residual (Newton-Raphson): 7.105427357601001859e-15
+Fermi energy                                     : 3.665002886561090079e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 8.787511481141851858e-05
+Fermi Energy computed: 3.665002886561090079e-01
+Time for compute rho on CPU: 4.931126999999868588e-03
+Time for compute rho on CPU: 2.782896999999451282e-03
+compute rho, wall time: 0.0111635s.
+
+number of electrons: 3.350344601750854423e+01
+***********************Self-Consistent-Field Iteration:  2 complete**********************
+Wall time for the above scf iteration: 1.171953399999999951e-01 seconds
+Number of Chebyshev filtered subspace iterations: 1
+
+SCF iterations converged to the specified tolerance after: 2 iterations.
+GS Fermi energy spin up: 3.665002886561090079e-01
+
+Poisson solve for total electrostatic potential (rhoOut+b): Time for compute rhs: 9.348000000031220225e-05
+
+initial abs. residual: 5.263074168326967950e+00 , current abs. residual: 7.072782692169452426e-11 , nsteps: 71 , abs. tolerance criterion:  1.000000000000000036e-10
+
+Time for Poisson/Helmholtz problem CG iterations: 6.023259000000003027e-03
+phiTot solve, wall time: 0.0061274s.
+ Printing KS eigen values (spin split if this is a spin polarized calculation ) and fractional occupancies for kPoint 0
+  
+0 : -1.830360295822970329e+00       1.000000000000000000e+00
+1 : -8.800946298394601852e-01       1.000000000000000000e+00
+2 : -8.800294791772876879e-01       1.000000000000000000e+00
+3 : -8.679852652113648759e-01       1.000000000000000000e+00
+4 : -5.612624803444413724e-01       1.000000000000000000e+00
+5 : -3.659488915608604676e-01       1.000000000000000000e+00
+6 : -3.518739142876109449e-01       1.000000000000000000e+00
+7 : -1.994415381716341945e-02       1.000000000000000000e+00
+8 : -1.527140069590673770e-02       1.000000000000000000e+00
+9 : -1.517152870547266996e-02       1.000000000000000000e+00
+10 : 2.512915139038179868e-01       1.000000000000000000e+00
+11 : 2.516639639012882013e-01       1.000000000000000000e+00
+12 : 2.982540332404413075e-01       1.000000000000000000e+00
+13 : 2.992833477092192718e-01       1.000000000000000000e+00
+14 : 3.213798488445882007e-01       9.999999999995787814e-01
+15 : 3.217113126918629828e-01       9.999999999994808597e-01
+16 : 3.562127747183966853e-01       9.984944348152597904e-01
+17 : 3.767951028794008783e-01       1.498650138483996214e-03
+18 : 3.863765290758787163e-01       3.534832330737185251e-06
+19 : 3.864473496593411883e-01       3.380214864157665416e-06
+20 : 5.144537807579747657e-01       2.627281256871076294e-41
+21 : 5.261945289589458064e-01       1.582228702433589127e-44
+22 : 6.549890751264679789e-01       7.475958191298604173e-80
+23 : 6.551194922822222155e-01       6.884877450325076407e-80
+24 : 6.705019905453957207e-01       4.157233174903896775e-84
+25 : 7.152403022813637046e-01       2.228629161978899352e-96
+26 : 7.478600902295452491e-01       2.518397877071812410e-105
+27 : 7.632818157353129518e-01       1.483451380225766678e-109
+28 : 7.634116894606420844e-01       1.366632418865382036e-109
+29 : 7.801251464303370353e-01       3.560461117414962949e-114
+30 : 7.882161423800090327e-01       2.149405171580733806e-116
+31 : 8.233128149188507772e-01       5.082157343432409297e-126
+32 : 9.893481709714293526e-01       1.465832332616442767e-171
+33 : 9.906006276949974598e-01       6.646026649469565730e-172
+34 : 1.031686716008529014e+00       3.577030505244865999e-183
+35 : 1.083566065026856373e+00       2.109218401549198195e-197
+36 : 1.101499548907928006e+00       2.543013518569270149e-202
+============================================================================================================
+
+Energy computations (Hartree)
+-------------------------------------------------------------------------------
+Band energy                                         :  -7.3762283798415371e+00
+Kinetic energy plus nonlocal PSP energy             :   4.2545077293786917e+01
+Exchange energy                                     :  -1.5696214331975302e+01
+Correlation energy                                  :  -1.3754407449049653e+00
+Local PSP Electrostatic energy                      :  -1.3857596917368824e+02
+Total internal energy                               :  -1.1310254695678159e+02
+Total internal energy per atom                      :  -2.8275636739195399e+01
+-------------------------------------------------------------------------------
+Total entropic energy: 7.165189889986119825e-05
+Total free energy: -1.131026186086805012e+02
+scf solve, wall time: 0.416924s.
+Total scf solve, wall time: 0.416936s.
+
+------------------DFT-FE ground-state solve completed---------------------------
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 6.083e+00s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
+| Atomic system initialization    |         1 | 1.151e+00s |  1.89e+01% |
+| Init local PSP                  |         1 | 2.123e-01s |  3.49e+00% |
+| KSDFT problem initialization    |         1 | 4.220e+00s |  6.94e+01% |
+| Nuclear self-potential solve    |         1 | 7.481e-02s |  1.23e+00% |
+| Total scf solve                 |         1 | 4.169e-01s |  6.85e+00% |
+| initialize density              |         1 | 4.936e-02s |  8.11e-01% |
++---------------------------------+-----------+------------+------------+
+
+
+
++--------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start         | 6.084e+00s |            |
+|                                                  |            |            |
+| Section                              | no. calls |  wall time | % of total |
++--------------------------------------+-----------+------------+------------+
+| Chebyshev solve                      |         3 | 3.141e-01s |  5.16e+00% |
+| Create atom bins                     |         1 | 4.931e-02s |  8.11e-01% |
+| Hamiltonian Matrix Computation       |         2 | 2.899e-02s |  4.77e-01% |
+| Lanczos k-step Upper Bound           |         3 | 3.296e-02s |  5.42e-01% |
+| Nuclear self-potential solve         |         1 | 7.484e-02s |  1.23e+00% |
+| VEff Computation                     |         2 | 7.024e-03s |  1.15e-01% |
+| compute rho                          |         2 | 1.699e-02s |  2.79e-01% |
+| density mixing                       |         2 | 4.611e-04s | 0.000e+00% |
+| image charges and k point generation |         1 | 1.913e+00s |  3.14e+01% |
+| init electronic fields               |         1 | 5.140e-02s |  8.45e-01% |
+| initialize wave functions            |         1 | 1.713e-03s | 0.000e+00% |
+| kohnShamDFTOperator init             |         1 | 2.107e-04s | 0.000e+00% |
+| mesh generation                      |         1 | 1.145e-02s |  1.88e-01% |
+| moved setup                          |         1 | 1.260e-01s |  2.07e+00% |
+| phiTot solve                         |         3 | 2.069e-02s |  3.40e-01% |
+| psp init                             |         1 | 2.088e+00s |  3.43e+01% |
+| scf solve                            |         1 | 4.169e-01s |  6.85e+00% |
+| unmoved setup                        |         1 | 4.408e-03s | 0.000e+00% |
++--------------------------------------+-----------+------------+------------+
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 6.084e+00s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+
+
++-----------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start            | 6.084e+00s |            |
+|                                                     |            |            |
+| Section                                 | no. calls |  wall time | % of total |
++-----------------------------------------+-----------+------------+------------+
+| Chebyshev filtering                     |         3 | 2.546e-01s |  4.19e+00% |
+| Copy from block to full flattened array |         3 | 1.857e-04s | 0.000e+00% |
+| Copy from full to block flattened array |         3 | 4.510e-04s | 0.000e+00% |
+| Rayleigh-Ritz GEP                       |         3 | 1.499e-02s |  2.46e-01% |
+| eigen vectors residuals opt             |         3 | 1.019e-02s |  1.67e-01% |
++-----------------------------------------+-----------+------------+------------+
+
+=============================================================================================
+DFT-FE Program ends. Elapsed wall time since start of the program: 6.584387373999999404e+00 seconds.
+=============================================================================================

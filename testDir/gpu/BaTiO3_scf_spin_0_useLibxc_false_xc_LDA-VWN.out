@@ -1,0 +1,2402 @@
+==========================================================================================================
+==========================================================================================================
+			Welcome to the Open Source program DFT-FE version	1.1.0-pre		        
+This is a C++ code for materials modeling from first principles using Kohn-Sham density functional theory.
+This is a real-space code for periodic, semi-periodic and non-periodic pseudopotential
+and all-electron calculations, and is based on adaptive finite-element discretization.
+For further details, and citing, please refer to our website: https://sites.google.com/umich.edu/dftfe
+==========================================================================================================
+ DFT-FE Mentors and Development leads (alphabetically) :									
+														
+ Sambit Das               - University of Michigan, USA
+ Vikram Gavini            - University of Michigan, USA
+ Phani Motamarri          - Indian Institute of Science, India
+ (A complete list of the many authors that have contributed to DFT-FE can be found in the authors file)
+==========================================================================================================
+ 	     Copyright (c) 2017-2025 The Regents of the University of Michigan and DFT-FE authors         
+ 			DFT-FE is published under [LGPL v2.1 or newer] 				
+==========================================================================================================
+==========================================================================================================
+ DFT-FE branch: xcGPU, commit: c17a5812deadaa198887051dc19e43697a1792a2
+ compiled with GPU support, using CUDA, with OpenMP support, with 64 bit integers, and without HIGHERQUAD_PSP
+==========================================================================================================
+set RESTART        = false
+set RESTART FOLDER = restartFolder
+set SOLVER MODE    = GS
+set USE GPU        = true
+set VERBOSITY      = 4
+subsection NEB
+  set ALLOW IMAGE FREEZING             = false
+  set BFGS STEP METHOD                 = QN
+  set ION RELAX FLAGS FILE             = 
+  set LBFGS HISTORY                    = 5
+  set MAXIMUM ION UPDATE STEP          = 0.5
+  set MAXIMUM NUMBER OF NEB ITERATIONS = 100
+  set MAXIMUM SPRING CONSTANT          = 5e-3
+  set MAX LINE SEARCH ITER             = 5
+  set MINIMUM SPRING CONSTANT          = 2e-3
+  set NEB COORDINATES FILE             = 
+  set NEB DOMAIN VECTORS FILE          = 
+  set NEB OPT SOLVER                   = LBFGS
+  set NUMBER OF IMAGES                 = 7
+  set PATH THRESHOLD                   = 5e-4
+end
+set KEEP SCRATCH FOLDER                             = false
+set MEM OPT MODE                                    = false
+set REPRODUCIBLE OUTPUT                             = false
+set WRITE STRUCTURE ENERGY FORCES DATA POST PROCESS = false
+subsection Boundary conditions
+  set CONSTRAINTS FROM SERIAL DOFHANDLER = false
+  set CONSTRAINTS PARALLEL CHECK         = false
+  set FLOATING NUCLEAR CHARGES           = true
+  set MULTIPOLE BOUNDARY CONDITIONS      = false
+  set PERIODIC1                          = true
+  set PERIODIC2                          = true
+  set PERIODIC3                          = true
+  set POINT WISE DIRICHLET CONSTRAINT    = false
+  set SELF POTENTIAL RADIUS              = 0.0
+  set SMEARED NUCLEAR CHARGES            = true
+end
+subsection Brillouin zone k point sampling options
+  set USE GROUP SYMMETRY         = false
+  set USE TIME REVERSAL SYMMETRY = true
+  set kPOINT RULE FILE           = 
+  subsection Monkhorst-Pack (MP) grid generation
+    set SAMPLING POINTS 1 = 1
+    set SAMPLING POINTS 2 = 1
+    set SAMPLING POINTS 3 = 1
+    set SAMPLING SHIFT 1  = 0
+    set SAMPLING SHIFT 2  = 0
+    set SAMPLING SHIFT 3  = 0
+  end
+end
+subsection DFT functional parameters
+  set AUX BASIS DATA                                    = 
+  set AUX BASIS TYPE                                    = FE
+  set EXCHANGE CORRELATION TYPE                         = LDA-VWN
+  set MODEL XC INPUT FILE                               = 
+  set NET CHARGE                                        = 0.0
+  set PSEUDOPOTENTIAL CALCULATION                       = true
+  set PSEUDOPOTENTIAL FILE NAMES LIST                   = pseudo.inp
+  set PSEUDO TESTS FLAG                                 = false
+  set PSP CUTOFF IMAGE CHARGES                          = 15.0
+  set SPIN POLARIZATION                                 = 0
+  set TOTAL MAGNETIZATION                               = 0.0
+  set USE ATOMIC MAGNETIZATION GUESS FOR CONSTRAINT MAG = false
+  set USE LIBXC FOR XC FUNCTIONAL EVALUATION            = false
+  subsection CONFINING POTENTIAL parameters
+    set APPLY CONFINING POTENTIAL = false
+    set C PARAM                   = 1.0
+    set INNER RADIUS              = 17.0
+    set OUTER RADIUS              = 20.0
+    set W PARAM                   = 1.0
+  end
+  subsection Dispersion Correction
+    set CN CUTOFF                  = 40.0
+    set D3 ATM                     = false
+    set D3 DAMPING TYPE            = 3
+    set D4 MBD                     = false
+    set DAMPING PARAMETERS FILE    = 
+    set DISPERSION CORRECTION TYPE = 0
+    set THREE BODY CUTOFF          = 40.0
+    set TWO BODY CUTOFF            = 94.8683298050514
+  end
+  subsection Hubbard Parameters
+    set HUBBARD PARAMETERS FILE = 
+  end
+end
+subsection Finite element mesh parameters
+  set DENSITY QUADRATURE RULE         = 18
+  set POLYNOMIAL ORDER                = 7
+  set POLYNOMIAL ORDER DENSITY NODAL  = 0
+  set POLYNOMIAL ORDER ELECTROSTATICS = 0
+  subsection Auto mesh generation parameters
+    set ATOM BALL RADIUS                  = 4
+    set AUTO ADAPT BASE MESH SIZE         = true
+    set BASE MESH SIZE                    = 0.0
+    set ERROR ESTIMATE WAVEFUNCTIONS      = 5
+    set GAUSSIAN CONSTANT FORCE GENERATOR = 0.75
+    set GAUSSIAN ORDER FORCE GENERATOR    = 4.0
+    set GAUSSIAN ORDER MOVE MESH TO ATOMS = 4.0
+    set INNER ATOM BALL RADIUS            = 0.0
+    set MESH ADAPTION                     = false
+    set MESH SIZES FILE                   = 
+    set MESH SIZE AROUND ATOM             = 1.6
+    set MESH SIZE AT ATOM                 = 0.0
+    set NUM LEVELS                        = 10
+    set TOLERANCE FOR MESH ADAPTION       = 1
+    set TOP FRAC                          = 0.1
+    set USE FLAT TOP GENERATOR            = false
+  end
+end
+subsection FunctionalTest
+  set TEST NAME = 
+end
+subsection GPU
+  set AUTO GPU BLOCK SIZES         = true
+  set FINE GRAINED GPU TIMINGS     = false
+  set SUBSPACE ROT FULL CPU MEM    = true
+  set USE DCCL                     = false
+  set USE ELPA GPU KERNEL          = false
+  set USE GPUDIRECT MPI ALL REDUCE = false
+end
+subsection Geometry
+  set ATOMIC COORDINATES FILE      = coordinates.inp
+  set ATOMIC DISP COORDINATES FILE = 
+  set DOMAIN VECTORS FILE          = domainVectors.inp
+  set NATOMS                       = 4
+  set NATOM TYPES                  = 3
+  subsection Optimization
+    set BFGS STEP METHOD           = QN
+    set CELL CONSTRAINT TYPE       = 12
+    set CELL OPT SOLVER            = LBFGS
+    set CELL STRESS                = false
+    set FORCE TOL                  = 1e-4
+    set ION FORCE                  = false
+    set ION OPT SOLVER             = LBFGS
+    set ION RELAX FLAGS FILE       = 
+    set LBFGS HISTORY              = 5
+    set MAXIMUM CELL UPDATE STEP   = 0.1
+    set MAXIMUM ION UPDATE STEP    = 0.5
+    set MAXIMUM OPTIMIZATION STEPS = 300
+    set MAXIMUM STAGGERED CYCLES   = 300
+    set MAX LINE SEARCH ITER       = 5
+    set NON SELF CONSISTENT FORCE  = false
+    set OPTIMIZATION MODE          = ION
+    set REUSE DENSITY              = 1
+    set REUSE WFC                  = true
+    set STRESS TOL                 = 1e-6
+    set USE PRECONDITIONER         = false
+  end
+end
+subsection Helmholtz problem parameters
+  set ABSOLUTE TOLERANCE HELMHOLTZ = 1e-10
+  set MAXIMUM ITERATIONS HELMHOLTZ = 10000
+end
+subsection Molecular Dynamics
+  set ATOMIC MASSES FILE          = 
+  set BOMD                        = false
+  set EXTRAPOLATE DENSITY         = 0
+  set MAX JACOBIAN RATIO FACTOR   = 1.5
+  set MAX WALL TIME               = 2592000.0
+  set NUMBER OF STEPS             = 1000
+  set STARTING TEMPERATURE        = 300.0
+  set TEMPERATURE CONTROLLER TYPE = NO_CONTROL
+  set THERMOSTAT TIME CONSTANT    = 100
+  set TIME STEP                   = 0.5
+  set TRACKING ATOMIC NO          = 0
+end
+subsection Parallelization
+  set BAND PARAL OPT           = true
+  set MPI ALLREDUCE BLOCK SIZE = 100.0
+  set NPBAND                   = 1
+  set NPKPT                    = 1
+end
+subsection Poisson problem parameters
+  set GPU MODE           = true
+  set MAXIMUM ITERATIONS = 20000
+  set TOLERANCE          = 1e-10
+  set VSELF GPU MODE     = true
+end
+subsection Post-processing Options
+  set DELTA ENERGY                       = 0.01
+  set DOS SMEAR TEMPERATURE              = 500
+  set PRINT KINETIC ENERGY               = false
+  set READ ATOMIC WFC PDOS FROM PSP FILE = false
+  set WRITE DENSITY FE MESH              = false
+  set WRITE DENSITY OF STATES            = false
+  set WRITE DENSITY QUAD DATA            = false
+  set WRITE LOCALIZATION LENGTHS         = false
+  set WRITE LOCAL DENSITY OF STATES      = false
+  set WRITE PROJECTED DENSITY OF STATES  = false
+  set WRITE WFC FE MESH                  = false
+end
+subsection SCF Checkpointing and Restart
+  set LOAD QUAD DATA        = false
+  set RESTART SP FROM NO SP = false
+  set SAVE QUAD DATA        = false
+end
+subsection SCF parameters
+  set ADAPT ANDERSON MIXING PARAMETER = false
+  set COMPUTE ENERGY EACH ITER        = false
+  set CONSTRAINT MAGNETIZATION        = false
+  set ENERGY TOLERANCE                = 1e-07
+  set KERKER MIXING PARAMETER         = 0.05
+  set MAXIMUM ITERATIONS              = 1
+  set MIXING HISTORY                  = 10
+  set MIXING METHOD                   = ANDERSON
+  set MIXING PARAMETER                = 0.0
+  set PURE STATE                      = false
+  set RESTA FERMI WAVEVECTOR          = 5.81
+  set RESTA SCREENING LENGTH          = 6.61
+  set SPIN MIXING ENHANCEMENT FACTOR  = 1.0
+  set STARTING WFC                    = RANDOM
+  set TEMPERATURE                     = 500
+  set TOLERANCE                       = 1e-6
+  set USE ENERGY RESIDUAL METRIC      = false
+  subsection Eigen-solver parameters
+    set ALGO                                                 = NORMAL
+    set ALLOW MULTIPLE PASSES POST FIRST SCF                 = true
+    set CHEBYSHEV FILTER TOLERANCE                           = 1e-12
+    set CHEBYSHEV POLYNOMIAL DEGREE                          = 0
+    set CHEBYSHEV POLYNOMIAL DEGREE SCALING FACTOR FIRST SCF = 1.34
+    set CHEBY WFC BLOCK SIZE                                 = 200
+    set HIGHEST STATE OF INTEREST FOR CHEBYSHEV FILTERING    = 0
+    set NUMBER OF CORE EIGEN STATES FOR MIXED PREC RR        = 0
+    set NUMBER OF KOHN-SHAM WAVEFUNCTIONS                    = 0
+    set ORTHOGONALIZATION TYPE                               = Auto
+    set OVERLAP COMPUTE COMMUN CHEBY                         = true
+    set OVERLAP COMPUTE COMMUN ORTHO RR                      = true
+    set RESTRICT TO SINGLE FILTER PASS                       = false
+    set REUSE LANCZOS UPPER BOUND                            = false
+    set SCALAPACKPROCS                                       = 0
+    set SCALAPACK BLOCK SIZE                                 = 0
+    set SUBSPACE PROJ SHEP GPU                               = false
+    set SUBSPACE ROT DOFS BLOCK SIZE                         = 10000
+    set TENSOR OP TYPE SINGLE PREC CHEBY                     = FP32
+    set USE APPROXIMATE OVERLAP MATRIX                       = true
+    set USE ELPA                                             = true
+    set USE MIXED PREC CGS SR                                = false
+    set USE MIXED PREC COMMUN ONLY XTOX XTHX                 = false
+    set USE MIXED PREC RR_SR                                 = false
+    set USE MIXED PREC XTHX                                  = false
+    set USE MIXED PREC XTOX                                  = false
+    set USE RESIDUAL CHFSI                                   = true
+    set USE SINGLE PREC CHEBY                                = false
+    set USE SINGLE PREC COMMUN CHEBY                         = false
+    set WFC BLOCK SIZE                                       = 400
+  end
+  subsection LOW RANK DIELECM PRECOND
+    set ADAPTIVE RANK REL TOL            = 0.3
+    set BETA TOL                         = 0.1
+    set ESTIMATE JAC CONDITION NO        = false
+    set METHOD SUB TYPE                  = ADAPTIVE
+    set POISSON SOLVER ABS TOL           = 1e-6
+    set STARTING NORM LARGE DAMPING      = 2.0
+    set USE SINGLE PREC DENSITY RESPONSE = false
+  end
+end
+Setting ORTHOGONALIZATION TYPE=CGS for pseudopotential calculations 
+=================================MPI Parallelization=========================================
+Total number of MPI tasks: 2
+k-point parallelization processor groups: 1
+Band parallelization processor groups: 1
+Number of MPI tasks for finite-element domain decomposition: 2
+============================================================================================
+Threads per MPI task: 1
+number of atoms: 4
+number of atoms types: 3
+ Warning: User has requested the number of Kohn-Sham wavefunctions to be less than orequal to half the number of electrons in the system. Setting the Kohn-Sham wavefunctionsto half the number of electrons with a 20 percent buffer to avoid convergence issues inSCF iterations
+ Setting the number of Kohn-Sham wave functions to be 37
+ Setting the number of Kohn-Sham wave functions for Device run to be: 37
+ Setting CHEBY WFC BLOCK SIZE for Device run to be 37
+ Setting WFC BLOCK SIZE for Device run to be 37
+
+Reading Pseudo-potential data for each atom from the list given in : pseudo.inp
+ Reading Pseudopotential File: Ba_ONCV_PBE-1.2.upf, with atomic number: 56, and has no nonlinear core-correction
+ Reading Pseudopotential File: Ti_ONCV_PBE-1.2.upf, with atomic number: 22, and has no nonlinear core-correction
+ Reading Pseudopotential File: O_ONCV_PBE-1.2.upf, with atomic number: 8, and has no nonlinear core-correction
+Scalapack Matrix created, row procs: 1
+Atomic system initialization, wall time: 1.1531s.
+-----------Simulation Domain bounding vectors (lattice vectors in fully periodic case)-------------
+v1 : 7.524889428259816881e+00 0.000000000000000000e+00 0.000000000000000000e+00
+v2 : 0.000000000000000000e+00 7.524889428259816881e+00 0.000000000000000000e+00
+v3 : 0.000000000000000000e+00 0.000000000000000000e+00 7.591029842621719759e+00
+-----------------------------------------------------------------------------------------
+-----Fractional coordinates of atoms------ 
+AtomId 0:  0.000000000000000000e+00 0.000000000000000000e+00 0.000000000000000000e+00
+AtomId 1:  5.000000000000000000e-01 5.000000000000000000e-01 5.000000000000000000e-01
+AtomId 2:  0.000000000000000000e+00 5.000000000000000000e-01 5.000000000000000000e-01
+AtomId 3:  5.000000000000000000e-01 0.000000000000000000e+00 5.000000000000000000e-01
+-----------------------------------------------------------------------------------------
+Number Image Charges  309
+-------------------k points cartesian coordinates and weights-----------------------------
+ [0.000000000000000000e+00, 0.000000000000000000e+00, 0.000000000000000000e+00] 1.000000000000000000e+00
+-----------------------------------------------------------------------------------------
+image charges and k point generation, wall time: 1.82197s.
+Minimum distance between atoms: 3.762444714129908441e+00
+Periodic Face Normals 1: 5.712166021234896363e+01 0.000000000000000000e+00 0.000000000000000000e+00
+Periodic Face Normals 2: 0.000000000000000000e+00 5.712166021234896363e+01 0.000000000000000000e+00
+Periodic Face Normals 3: 0.000000000000000000e+00 0.000000000000000000e+00 5.662396090753635036e+01
+Periodic Facepairs size: 75
+
+Coarse triangulation number of elements: 125
+Hanging node and periodic constraints parallel consistency achieved.
+Triangulation generation summary: 
+ num elements: 125, num refinement levels: 0, min element length: 1.504977885651963554e+00, max element length: 1.504977885651963554e+00
+ numParallelCells: 125
+Periodic Face Normals 1: 5.712166021234896363e+01 0.000000000000000000e+00 0.000000000000000000e+00
+Periodic Face Normals 2: 0.000000000000000000e+00 5.712166021234896363e+01 0.000000000000000000e+00
+Periodic Face Normals 3: 0.000000000000000000e+00 0.000000000000000000e+00 5.662396090753635036e+01
+Periodic Facepairs size: 75
+
+Coarse triangulation number of elements: 125
+Hanging node and periodic constraints parallel consistency achieved.
+Triangulation generation summary: 
+ num elements: 125, num refinement levels: 0, min element length: 1.504977885651963554e+00, max element length: 1.504977885651963554e+00
+ numParallelCells: 125
+mesh generation, wall time: 0.0614598s.
+
+Mesh generation completed, Current maximum memory usage across all processors: 5.973647359999999935e+02 MB.
+
+
+Inititialization of meshmovement class objects completed, Current maximum memory usage across all processors: 5.977579520000000457e+02 MB.
+
+
+Distributed dofs, Current maximum memory usage across all processors: 5.977579520000000457e+02 MB.
+
+
+Extracted indices, Current maximum memory usage across all processors: 6.048358399999999619e+02 MB.
+
+
+Created the basic constraint matrices, Current maximum memory usage across all processors: 6.111272960000000012e+02 MB.
+
+
+Force initUnmoved, Current maximum memory usage across all processors: 6.111272960000000012e+02 MB.
+
+X Functional: P. A. M. Dirac.,  Math. Proc. Cambridge Philos. Soc. 26, 376 (1930) (DOI 10.1017/S0305004100016108)
+C Functional: S. H. Vosko, L. Wilk, and M. Nusair.,  Can. J. Phys. 58, 1200 (1980) (DOI 10.1139/p80-159)
+unmoved setup, wall time: 0.0400007s.
+
+initUnmovedTriangulation completed, Current maximum memory usage across all processors: 6.115205120000000534e+02 MB.
+
+
+moveMeshToAtoms completed, Current maximum memory usage across all processors: 6.115205120000000534e+02 MB.
+
+
+Finite element mesh information
+-------------------------------------------------
+FE interpolating polynomial order for Kohn-Sham eigenvalue problem: 7
+FE interpolating polynomial order for electrostatics solve: 7
+FE interpolating polynomial order for nodal electron density computation: 9
+quadrature rule for electron density and kinetic energy density computation: 18
+number of elements: 125
+number of degrees of freedom for the Kohn-Sham eigenvalue problem : 46656
+Minimum mesh size: 1.504977885651963554e+00
+-------------------------------------------------
+
+-----------------------------------------------------------------------------
+Rough estimate of peak memory requirement (RAM) total: 1.055240704000000029e+00 GB.
+Rough estimate of peak memory requirement (RAM) per MPI task: 5.276203520000000147e-01 GB.
+DFT-FE Message: many of the memory optimizations implemented
+in DFT-FE are useful only for larger system sizes.
+-----------------------------------------------------------------------------
+
+Dofs distributed again, Current maximum memory usage across all processors: 6.115205120000000534e+02 MB.
+
+initBoundaryConditions: Time taken for creating dofhandler related objects: 1.867704700000016871e-02
+
+Created support points, Current maximum memory usage across all processors: 6.115205120000000534e+02 MB.
+
+
+Called force init moved, Current maximum memory usage across all processors: 6.115205120000000534e+02 MB.
+
+initBoundaryConditions: Time taken for force init moved: 3.914560000000122386e-04
+initBoundaryConditions: Time taken for matrix free reinit: 1.713181403000000103e+00
+
+Called matrix free reinit, Current maximum memory usage across all processors: 1.057316863999999896e+03 MB.
+
+Volume of the domain (Bohr^3): 4.298341770565104412e+02
+Determining the ball radius around the atom for nuclear self-potential solve... 
+...Adaptively set ball radius: 3.000000000000000000e+00
+number bins: 4
+bin 0: number of global atoms: 1
+Reduced ball radius for setting boundary conditions taking hanging nodes into consideration: 3.000000000000000000e+00
+bin 1: number of global atoms: 1
+Reduced ball radius for setting boundary conditions taking hanging nodes into consideration: 3.000000000000000000e+00
+bin 2: number of global atoms: 1
+Reduced ball radius for setting boundary conditions taking hanging nodes into consideration: 3.000000000000000000e+00
+bin 3: number of global atoms: 1
+Reduced ball radius for setting boundary conditions taking hanging nodes into consideration: 3.000000000000000000e+00
+
+
++-------------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start              | 7.321e-01s |            |
+|                                                       |            |            |
+| Section                                   | no. calls |  wall time | % of total |
++-------------------------------------------+-----------+------------+------------+
+| create bins: find nodes inside atom balls |        13 | 2.524e-01s |  3.45e+01% |
+| create bins: initial overheads            |         1 | 8.054e-03s |  1.10e+00% |
+| create bins: local interaction maps       |        13 | 4.994e-04s | 0.000e+00% |
+| create bins: put in bins                  |         1 | 4.499e-05s | 0.000e+00% |
+| create bins: sanity check                 |         1 | 2.593e-02s |  3.54e+00% |
+| create bins: set boundary conditions      |         1 | 4.421e-01s |  6.04e+01% |
++-------------------------------------------+-----------+------------+------------+
+
+Create atom bins, wall time: 0.73222s.
+updateAtomPositionsAndMoveMesh: initBoundaryConditions: Time taken for bins update: 7.322687239999998710e-01
+initBoundaryConditions: Time taken for initpRefinedObjects: 9.452398009999996020e-01
+moved setup, wall time: 2.68285s.
+
+initBoundaryConditions completed, Current maximum memory usage across all processors: 1.255104512000000113e+03 MB.
+
+
+Overloaded constraint matrices initialized, Current maximum memory usage across all processors: 1.255497728000000052e+03 MB.
+
+
+Setting initial guess for wavefunctions....
+
+Created flattened array eigenvectors before update ghost values, Current maximum memory usage across all processors: 1.262575616000000082e+03 MB.
+
+Number of wavefunctions generated randomly to be used as initial guess for starting the SCF : 37
+=============================================================================================================================
+number of electrons: 3.400000000000000000e+01
+number of eigen values: 37
+=============================================================================================================================
+initialize wave functions, wall time: 0.02265s.
+
+Created flattened array eigenvectors, Current maximum memory usage across all processors: 1.262575616000000082e+03 MB.
+
+
+Reading initial guess for electron-density.....
+initial total charge before normalizing to number of electrons: 3.349654245475634440e+01
+Initial total charge after normalization: 3.399999999999833022e+01
+initialize density, wall time: 1.22273s.
+
+initRho called, Current maximum memory usage across all processors: 1.262968832000000020e+03 MB.
+
+init electronic fields, wall time: 1.25361s.
+
+initElectronicFields completed, Current maximum memory usage across all processors: 1.262968832000000020e+03 MB.
+
+
+Pseudopotential initalization....
+initPseudoPotentialAll: Time taken for initializing core density for non-linear core correction: 3.880000001288408384e-07
+ONCVclass: Time taken for computeSparseStructureNonLocalProjectors: 1.160297699999999210e-01
+ONCVclass: Time taken for non local psp init: 1.807837167999998940e+00
+psp init, wall time: 1.92398s.
+
+initPseudopotential completed, Current maximum memory usage across all processors: 1.318805503999999928e+03 MB.
+
+init: Time taken for kohnShamDFTOperator class initialization: 9.913650000008544794e-04
+kohnShamDFTOperator init, wall time: 0.00100651s.
+KSDFT problem initialization, wall time: 7.85293s.
+ Time taken for smeared charge initialization for current bin: 3.387586999998859483e-03
+ Time taken for smeared charge initialization for current bin: 1.609489999999880183e-03
+ Time taken for smeared charge initialization for current bin: 1.279153000000476936e-03
+ Time taken for smeared charge initialization for current bin: 1.301695000000435698e-03
+Solve vself in bins: time for smeared charge initialization, compute rhs and diagonal: 6.135356049999991512e-01
+ poissonDevice::solveVselfInBins: time for creating xD: 2.679944000000489268e-03
+ poissonDevice::solveVselfInBins: time for mem allocation: 2.586315000000283248e-03
+ poissonDevice::solveVselfInBins: time for Device CG solver memory allocation: 3.167837999999534304e-03
+Device based Linear Conjugate Gradient solver for bin: 0 started with residual norm squared: 6.072845807941294538e+01
+Device based Linear Conjugate Gradient solver for bin: 1 started with residual norm squared: 1.532150660680061804e+01
+Device based Linear Conjugate Gradient solver for bin: 2 started with residual norm squared: 1.532150660680061982e+01
+Device based Linear Conjugate Gradient solver for bin: 3 started with residual norm squared: 1.526828964983991099e+01
+Device based Linear Conjugate Gradient solver for bin: 4 started with residual norm squared: 1.029947344685665627e+02
+Device based Linear Conjugate Gradient solver for bin: 5 started with residual norm squared: 7.027701806259111095e+01
+Device based Linear Conjugate Gradient solver for bin: 6 started with residual norm squared: 7.027701806259108253e+01
+Device based Linear Conjugate Gradient solver for bin: 7 started with residual norm squared: 7.069802937326784331e+01
+Device based Linear Conjugate Gradient solver for bin: 8 started with residual norm squared: 2.346407070113809112e+01
+Device based Linear Conjugate Gradient solver for bin: 9 started with residual norm squared: 1.532197190075277149e+01
+Device based Linear Conjugate Gradient solver for bin: 10 started with residual norm squared: 1.056116646785311985e+01
+Device based Linear Conjugate Gradient solver for bin: 11 started with residual norm squared: 1.055069148658919076e+01
+Device based Linear Conjugate Gradient solver for bin: 12 started with residual norm squared: 2.346407070113809468e+01
+Device based Linear Conjugate Gradient solver for bin: 13 started with residual norm squared: 1.056116646785312163e+01
+Device based Linear Conjugate Gradient solver for bin: 14 started with residual norm squared: 1.532197190075277149e+01
+Device based Linear Conjugate Gradient solver for bin: 15 started with residual norm squared: 1.055069148658919786e+01
+Linear Conjugate Gradient solver for bin: 0 converged after 129 iterations. with residual norm squared 9.562893643268597768e-24
+Linear Conjugate Gradient solver for bin: 1 converged after 129 iterations. with residual norm squared 3.604066606854701486e-26
+Linear Conjugate Gradient solver for bin: 2 converged after 129 iterations. with residual norm squared 3.399609989568849648e-26
+Linear Conjugate Gradient solver for bin: 3 converged after 129 iterations. with residual norm squared 9.716329667550487840e-30
+Linear Conjugate Gradient solver for bin: 4 converged after 129 iterations. with residual norm squared 3.372535331728534586e-26
+Linear Conjugate Gradient solver for bin: 5 converged after 129 iterations. with residual norm squared 1.178169085677159337e-25
+Linear Conjugate Gradient solver for bin: 6 converged after 129 iterations. with residual norm squared 1.178473594382816075e-25
+Linear Conjugate Gradient solver for bin: 7 converged after 129 iterations. with residual norm squared 4.665171989370648593e-30
+Linear Conjugate Gradient solver for bin: 8 converged after 129 iterations. with residual norm squared 1.517958286503775033e-21
+Linear Conjugate Gradient solver for bin: 9 converged after 129 iterations. with residual norm squared 2.720446114480682940e-28
+Linear Conjugate Gradient solver for bin: 10 converged after 129 iterations. with residual norm squared 1.078143993651188171e-24
+Linear Conjugate Gradient solver for bin: 11 converged after 129 iterations. with residual norm squared 9.347864914576969730e-25
+Linear Conjugate Gradient solver for bin: 12 converged after 129 iterations. with residual norm squared 1.537610223471298714e-21
+Linear Conjugate Gradient solver for bin: 13 converged after 129 iterations. with residual norm squared 1.289244118364134178e-24
+Linear Conjugate Gradient solver for bin: 14 converged after 129 iterations. with residual norm squared 2.684643860750074556e-28
+Linear Conjugate Gradient solver for bin: 15 converged after 129 iterations. with residual norm squared 9.320088670100241797e-25
+ poissonDevice::solveVselfInBins: time for Poisson problem iterations: 1.937896179999984980e-01
+Solve vself in bins: time for poissonDevice::solveVselfInBins : 2.106941209999995124e-01
+ Time taken for vself self energy for current bin: 7.312939999994938489e-04
+ Time taken for vself self energy for current bin: 2.399689999990073375e-04
+ Time taken for vself self energy for current bin: 2.326910000007842427e-04
+ Time taken for vself self energy for current bin: 2.079130000005591228e-04
+Solve vself in bins: time for updating d_vselfFieldBins : 1.304180900000062593e-02
+Nuclear self-potential solve, wall time: 0.862465s.
+Nuclear self-potential solve, wall time: 0.862517s.
+initLocalPSP, max psp tail considered: 6.000000000000000000e+00
+initLocalPSP: Time taken for init1: 1.071257790000004206e-01
+initLocalPSP: Time taken for init2: 1.277423720000001595e-01
+initLocalPSP: Time taken for init3: 7.339569499999853974e-02
+Init local PSP, wall time: 0.30879s.
+
+************************Begin Self-Consistent-Field Iteration:  1 ***********************
+density mixing, wall time: 9.24e-07s.
+
+Poisson solve for total electrostatic potential (rhoIn+b): Time for compute rhsHost and copy to Device: 8.106271999999137279e-03
+
+initial abs. residual in Device: 3.286496993295471736e+00 , current abs. residual in Device: 9.152348386525660070e-11 , nsteps: 330 , abs. tolerance criterion in Device:  1.000000000000000036e-10
+
+Time for Device Poisson/Helmholtz problem CG iterations: 7.633266500000068788e-02
+phiTot solve, wall time: 0.0869894s.
+VEff Computation, wall time: 0.037842s.
+Beginning Chebyshev filter pass 1 for spin 1
+Hamiltonian Matrix Computation, wall time: 0.0635686s.
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  1.3873336763e+02
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 1.100e-02s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.749294310296126920e+00
+eigen vector 1: 3.832724353766980396e+00
+eigen vector 2: 3.791617452511612640e+00
+eigen vector 3: 3.857896863998089731e+00
+eigen vector 4: 3.868982467085622101e+00
+eigen vector 5: 3.895183840974696388e+00
+eigen vector 6: 3.836413879056233878e+00
+eigen vector 7: 3.802966747598318875e+00
+eigen vector 8: 3.940594797182583875e+00
+eigen vector 9: 3.792607014726636638e+00
+eigen vector 10: 3.933724883245557802e+00
+eigen vector 11: 3.898873554671741903e+00
+eigen vector 12: 4.069702555019094170e+00
+eigen vector 13: 3.762142909386698264e+00
+eigen vector 14: 3.825546792336312674e+00
+eigen vector 15: 3.917374203865263471e+00
+eigen vector 16: 3.975251822994540163e+00
+eigen vector 17: 3.907446415331063072e+00
+eigen vector 18: 3.928049862903813416e+00
+eigen vector 19: 4.023810077328788815e+00
+eigen vector 20: 3.800468074373701377e+00
+eigen vector 21: 4.019711179104382914e+00
+eigen vector 22: 4.018345359324698940e+00
+eigen vector 23: 3.884563182217709354e+00
+eigen vector 24: 3.787534145851242151e+00
+eigen vector 25: 3.990677537036011024e+00
+eigen vector 26: 4.068020368176516577e+00
+eigen vector 27: 3.876082202634806517e+00
+eigen vector 28: 3.922224401762856694e+00
+eigen vector 29: 3.975497272922488889e+00
+eigen vector 30: 4.134572654586860629e+00
+eigen vector 31: 4.082041769634600747e+00
+eigen vector 32: 3.957117484407749686e+00
+eigen vector 33: 3.917982665583598312e+00
+eigen vector 34: 4.070885340291723331e+00
+eigen vector 35: 3.935328442120287651e+00
+eigen vector 36: 4.174352610667723340e+00
+
+eigen value   0: 2.572948789821316140e+00
+eigen value   1: 2.996108280200054264e+00
+eigen value   2: 3.148992686931110452e+00
+eigen value   3: 3.262880920384668038e+00
+eigen value   4: 3.352948942644010888e+00
+eigen value   5: 3.530502194705974262e+00
+eigen value   6: 3.559123074726174618e+00
+eigen value   7: 3.662628563804829263e+00
+eigen value   8: 3.716885430172930604e+00
+eigen value   9: 3.733522864555638421e+00
+eigen value  10: 3.854025239379279544e+00
+eigen value  11: 3.969285056635516007e+00
+eigen value  12: 4.017772698825734956e+00
+eigen value  13: 4.159257753474351560e+00
+eigen value  14: 4.212475487969458143e+00
+eigen value  15: 4.261317947440025122e+00
+eigen value  16: 4.395690789200242143e+00
+eigen value  17: 4.454870770325862317e+00
+eigen value  18: 4.513390793551084634e+00
+eigen value  19: 4.604840173344675769e+00
+eigen value  20: 4.775972375613926957e+00
+eigen value  21: 4.849002290801990078e+00
+eigen value  22: 4.902083917524100443e+00
+eigen value  23: 4.934640134162314951e+00
+eigen value  24: 5.076516866093752967e+00
+eigen value  25: 5.171853577418464631e+00
+eigen value  26: 5.238129119011274426e+00
+eigen value  27: 5.294955131149698957e+00
+eigen value  28: 5.428656699137530239e+00
+eigen value  29: 5.491406821463398202e+00
+eigen value  30: 5.661319894546849696e+00
+eigen value  31: 5.688119042709183226e+00
+eigen value  32: 5.710305555444318060e+00
+eigen value  33: 5.880157294758497244e+00
+eigen value  34: 5.929562104069391992e+00
+eigen value  35: 6.264369064943368315e+00
+eigen value  36: 6.322691026562262451e+00
+
+Fermi energy constraint residual (Newton-Raphson): 2.380318164796335623e-12
+Fermi energy                                     : 4.425280779470949000e+00
+Maximum residual norm among all states with occupation number greater than 1e-3: 4.069702555019094170e+00
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:4.069702555019094170e+00
+Beginning Chebyshev filter pass 2 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  6.3226910266e+00
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.329e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 5.130934455653617388e-01
+eigen vector 1: 4.320429761440732208e-01
+eigen vector 2: 4.730517556224283493e-01
+eigen vector 3: 4.369047232888373378e-01
+eigen vector 4: 4.823005450391767979e-01
+eigen vector 5: 4.917904759364616907e-01
+eigen vector 6: 6.472853306964367892e-01
+eigen vector 7: 4.516553646786805598e-01
+eigen vector 8: 4.768061773601299791e-01
+eigen vector 9: 4.260519832015753350e-01
+eigen vector 10: 4.614794871883607930e-01
+eigen vector 11: 4.742328585203732239e-01
+eigen vector 12: 4.600590692303024309e-01
+eigen vector 13: 4.556634644786712318e-01
+eigen vector 14: 4.891564970063615458e-01
+eigen vector 15: 5.041855543605430201e-01
+eigen vector 16: 4.582240570559188431e-01
+eigen vector 17: 6.142537727153123406e-01
+eigen vector 18: 4.484957944348056391e-01
+eigen vector 19: 4.646922033636823879e-01
+eigen vector 20: 5.100086185216482493e-01
+eigen vector 21: 5.200357921485934121e-01
+eigen vector 22: 5.778363990602605194e-01
+eigen vector 23: 5.443079294693325965e-01
+eigen vector 24: 5.468213278997814397e-01
+eigen vector 25: 5.717269771757510499e-01
+eigen vector 26: 6.057864534082962882e-01
+eigen vector 27: 5.358336479023630972e-01
+eigen vector 28: 5.829956354622801706e-01
+eigen vector 29: 5.685614854275319319e-01
+eigen vector 30: 5.549429490955118949e-01
+eigen vector 31: 5.662289091679394426e-01
+eigen vector 32: 5.869240135109210499e-01
+eigen vector 33: 5.944291296808035252e-01
+eigen vector 34: 6.074625418235920504e-01
+eigen vector 35: 5.897332157044051781e-01
+eigen vector 36: 6.170755215334269295e-01
+
+eigen value   0: -1.521644491770311580e+00
+eigen value   1: -6.787816786619952358e-01
+eigen value   2: -6.480586537644600353e-01
+eigen value   3: -6.151336430901058749e-01
+eigen value   4: -3.842258258145690442e-01
+eigen value   5: -2.396516213220689917e-01
+eigen value   6: -8.382141432223894073e-02
+eigen value   7: 1.640948954891331690e-01
+eigen value   8: 1.820467423590499678e-01
+eigen value   9: 2.166200930855551876e-01
+eigen value  10: 3.188094421328656614e-01
+eigen value  11: 3.630588244709108681e-01
+eigen value  12: 3.743362012280802564e-01
+eigen value  13: 4.271847687767948987e-01
+eigen value  14: 4.375664812832205652e-01
+eigen value  15: 6.281961461709595351e-01
+eigen value  16: 6.632680554642058635e-01
+eigen value  17: 6.875507171228820713e-01
+eigen value  18: 7.139260862193995694e-01
+eigen value  19: 7.654808913802136905e-01
+eigen value  20: 7.864131936127476408e-01
+eigen value  21: 8.084293990979111166e-01
+eigen value  22: 8.722927188697985335e-01
+eigen value  23: 9.492983931698361078e-01
+eigen value  24: 9.742224824519237769e-01
+eigen value  25: 1.039320605211042192e+00
+eigen value  26: 1.063928782429660602e+00
+eigen value  27: 1.108380600101045443e+00
+eigen value  28: 1.199419851073211252e+00
+eigen value  29: 1.218836718273295761e+00
+eigen value  30: 1.285601619566192122e+00
+eigen value  31: 1.394371766170996674e+00
+eigen value  32: 1.462618126521899820e+00
+eigen value  33: 1.498714664291861176e+00
+eigen value  34: 1.639722420290132376e+00
+eigen value  35: 1.674210560042932672e+00
+eigen value  36: 1.783775846981842106e+00
+
+Fermi energy constraint residual (Newton-Raphson): 0.000000000000000000e+00
+Fermi energy                                     : 6.754093862475223364e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 6.472853306964367892e-01
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:6.472853306964367892e-01
+Beginning Chebyshev filter pass 3 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  1.7837758470e+00
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.296e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 1.425068307557809423e-02
+eigen vector 1: 2.098694965746326219e-02
+eigen vector 2: 3.113634698591459526e-02
+eigen vector 3: 5.439386910563184102e-02
+eigen vector 4: 5.395167824296853015e-02
+eigen vector 5: 4.361910200186367575e-02
+eigen vector 6: 6.089378248649820330e-02
+eigen vector 7: 7.490166162548664297e-02
+eigen vector 8: 7.618243660200435530e-02
+eigen vector 9: 1.343083766609566299e-01
+eigen vector 10: 5.707714872285137020e-02
+eigen vector 11: 9.816644092084785000e-02
+eigen vector 12: 6.738727041943264051e-02
+eigen vector 13: 5.968279185377521612e-02
+eigen vector 14: 9.309831438788065960e-02
+eigen vector 15: 1.530295217429033516e-01
+eigen vector 16: 1.187789362385230640e-01
+eigen vector 17: 7.765620455811227119e-02
+eigen vector 18: 1.184791691174667538e-01
+eigen vector 19: 1.325622953595285980e-01
+eigen vector 20: 1.039044791719491434e-01
+eigen vector 21: 8.919049710398188613e-02
+eigen vector 22: 1.386781422994259327e-01
+eigen vector 23: 1.190118610004563676e-01
+eigen vector 24: 8.331176168264363413e-02
+eigen vector 25: 1.079752811707469784e-01
+eigen vector 26: 1.122333789603363885e-01
+eigen vector 27: 1.309314315481930058e-01
+eigen vector 28: 1.501140901119417670e-01
+eigen vector 29: 1.383772909200358392e-01
+eigen vector 30: 1.371849702174406105e-01
+eigen vector 31: 1.871491054768940066e-01
+eigen vector 32: 2.219807359949158843e-01
+eigen vector 33: 2.482859865551491907e-01
+eigen vector 34: 1.888452448028948294e-01
+eigen vector 35: 2.143891731093662822e-01
+eigen vector 36: 1.711144893678834267e-01
+
+eigen value   0: -1.617955165374749260e+00
+eigen value   1: -7.629450165338925727e-01
+eigen value   2: -7.626352537387026675e-01
+eigen value   3: -7.483465982971888586e-01
+eigen value   4: -5.450132431367644692e-01
+eigen value   5: -3.761476227167055986e-01
+eigen value   6: -3.650562457211427025e-01
+eigen value   7: -1.127129015252799869e-02
+eigen value   8: -3.844763983194714619e-03
+eigen value   9: 1.162574752487106206e-02
+eigen value  10: 1.759571363455888215e-01
+eigen value  11: 1.866316127505482925e-01
+eigen value  12: 1.961569552410038775e-01
+eigen value  13: 2.175701871532574327e-01
+eigen value  14: 2.210366536430532491e-01
+eigen value  15: 2.480332457901935628e-01
+eigen value  16: 3.696828995789311900e-01
+eigen value  17: 4.624864836587044836e-01
+eigen value  18: 4.700989122349194527e-01
+eigen value  19: 4.920407166633505858e-01
+eigen value  20: 5.317041151126242760e-01
+eigen value  21: 5.489501984387199496e-01
+eigen value  22: 5.712136388237949447e-01
+eigen value  23: 6.059770116181707467e-01
+eigen value  24: 6.805331882348411021e-01
+eigen value  25: 6.977973133572468178e-01
+eigen value  26: 7.278069819600307966e-01
+eigen value  27: 7.545364151253506346e-01
+eigen value  28: 7.693191339239614512e-01
+eigen value  29: 8.015986580228198211e-01
+eigen value  30: 8.330757560596278033e-01
+eigen value  31: 8.566964958293674659e-01
+eigen value  32: 9.214550584132729094e-01
+eigen value  33: 9.925663829045922038e-01
+eigen value  34: 1.028542883322776991e+00
+eigen value  35: 1.052079871063307470e+00
+eigen value  36: 1.138791609108196212e+00
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 4.095892319661746939e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 1.530295217429033516e-01
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:1.530295217429033516e-01
+Beginning Chebyshev filter pass 4 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  1.1387916091e+00
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.136e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.102782504281116106e-04
+eigen vector 1: 7.671523814586304196e-04
+eigen vector 2: 1.159186046101468330e-03
+eigen vector 3: 3.086633509286640722e-03
+eigen vector 4: 3.058695158151558853e-03
+eigen vector 5: 3.077096838415463442e-03
+eigen vector 6: 4.327749197991233310e-03
+eigen vector 7: 1.006878163952926349e-02
+eigen vector 8: 7.089600294047238536e-03
+eigen vector 9: 1.363885942887620162e-02
+eigen vector 10: 6.729616315175080375e-03
+eigen vector 11: 1.513391406807949348e-02
+eigen vector 12: 1.179459906158038945e-02
+eigen vector 13: 1.560566492898442063e-02
+eigen vector 14: 6.959074787850848785e-03
+eigen vector 15: 2.464297690920633568e-02
+eigen vector 16: 2.806854925453785427e-02
+eigen vector 17: 3.349738620113614646e-02
+eigen vector 18: 9.182335044349764983e-03
+eigen vector 19: 3.404713883755079717e-02
+eigen vector 20: 2.952182957007520522e-02
+eigen vector 21: 4.574467167295624692e-02
+eigen vector 22: 1.339896255084752769e-02
+eigen vector 23: 3.494107932446504500e-02
+eigen vector 24: 3.146072888458528033e-02
+eigen vector 25: 4.256516926618562208e-02
+eigen vector 26: 5.021945112447135512e-02
+eigen vector 27: 3.484222344559519124e-02
+eigen vector 28: 4.259266008587725416e-02
+eigen vector 29: 5.823274472859330669e-02
+eigen vector 30: 2.583988488131133687e-02
+eigen vector 31: 3.376425016769524917e-02
+eigen vector 32: 6.962875832950785049e-02
+eigen vector 33: 5.490164356746810720e-02
+eigen vector 34: 7.907262610546378356e-02
+eigen vector 35: 8.719118694046856799e-02
+eigen vector 36: 1.100560035274816689e-01
+
+eigen value   0: -1.618037611867054304e+00
+eigen value   1: -7.631986661357589297e-01
+eigen value   2: -7.631981964344873859e-01
+eigen value   3: -7.502619578723743743e-01
+eigen value   4: -5.470139863478690190e-01
+eigen value   5: -3.777911349653181872e-01
+eigen value   6: -3.677586025201133313e-01
+eigen value   7: -1.897457109447336226e-02
+eigen value   8: -9.538048247538675681e-03
+eigen value   9: -9.378524070782524868e-03
+eigen value  10: 1.722241863664792927e-01
+eigen value  11: 1.724757503765067257e-01
+eigen value  12: 1.906567530993451276e-01
+eigen value  13: 2.092949740645811130e-01
+eigen value  14: 2.138039640995254564e-01
+eigen value  15: 2.146307410526557824e-01
+eigen value  16: 3.458823968627589562e-01
+eigen value  17: 4.450032242918316450e-01
+eigen value  18: 4.539360682275733749e-01
+eigen value  19: 4.560828908763188139e-01
+eigen value  20: 5.045300553554631362e-01
+eigen value  21: 5.156063247018872753e-01
+eigen value  22: 5.517076248960811613e-01
+eigen value  23: 5.738540761094210740e-01
+eigen value  24: 6.598158141707534119e-01
+eigen value  25: 6.677346031523760939e-01
+eigen value  26: 6.862372271886316710e-01
+eigen value  27: 7.099143888409372716e-01
+eigen value  28: 7.117837433467109065e-01
+eigen value  29: 7.425400831217819908e-01
+eigen value  30: 7.686162089954398091e-01
+eigen value  31: 7.809912266355711896e-01
+eigen value  32: 8.052240452673581350e-01
+eigen value  33: 8.203190317247793795e-01
+eigen value  34: 8.694485567941440118e-01
+eigen value  35: 8.989415253697932151e-01
+eigen value  36: 1.034821182443515619e+00
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.857888087587711401e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 2.806854925453785427e-02
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:2.806854925453785427e-02
+Beginning Chebyshev filter pass 5 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  1.0348211824e+00
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.102e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 5.507171803852175148e-06
+eigen vector 1: 2.346994813749339837e-05
+eigen vector 2: 4.526120493197302212e-05
+eigen vector 3: 1.190066967089389730e-04
+eigen vector 4: 1.391719742264751808e-04
+eigen vector 5: 1.460083707251769180e-04
+eigen vector 6: 2.381895590825772505e-04
+eigen vector 7: 6.545365216559597982e-04
+eigen vector 8: 4.137703168497852777e-04
+eigen vector 9: 1.522870618520173400e-03
+eigen vector 10: 3.834658970627057907e-04
+eigen vector 11: 1.864016298008736852e-03
+eigen vector 12: 2.179060080609755007e-03
+eigen vector 13: 2.666179505372848462e-03
+eigen vector 14: 8.989933893615800363e-04
+eigen vector 15: 3.818558128079963844e-03
+eigen vector 16: 6.665600210111815790e-03
+eigen vector 17: 1.301107171869833948e-02
+eigen vector 18: 9.663828868032156095e-04
+eigen vector 19: 7.969718675439786335e-03
+eigen vector 20: 8.646577473520216869e-03
+eigen vector 21: 1.462904808473763398e-02
+eigen vector 22: 3.552806210445468710e-03
+eigen vector 23: 8.275601964230577812e-03
+eigen vector 24: 5.435320127786812811e-03
+eigen vector 25: 2.354669728470414752e-02
+eigen vector 26: 1.929088000192819702e-02
+eigen vector 27: 1.131007225333081206e-02
+eigen vector 28: 1.348611886285074231e-02
+eigen vector 29: 1.090280198149223660e-02
+eigen vector 30: 9.091908887083246377e-03
+eigen vector 31: 6.555328617628422387e-03
+eigen vector 32: 3.640839575514082105e-02
+eigen vector 33: 3.962552794837528175e-02
+eigen vector 34: 3.482659600114960258e-02
+eigen vector 35: 2.650278388761143772e-02
+eigen vector 36: 1.089920521050792568e-01
+
+eigen value   0: -1.618037651658257747e+00
+eigen value   1: -7.631990179379927186e-01
+eigen value   2: -7.631990169861253559e-01
+eigen value   3: -7.502679446615511116e-01
+eigen value   4: -5.470205958344439567e-01
+eigen value   5: -3.777984595769326992e-01
+eigen value   6: -3.677737412330908673e-01
+eigen value   7: -1.907332353732078128e-02
+eigen value   8: -9.587392482788005890e-03
+eigen value   9: -9.584983739109985065e-03
+eigen value  10: 1.721712915542546463e-01
+eigen value  11: 1.721755495162605454e-01
+eigen value  12: 1.904452952450660930e-01
+eigen value  13: 2.089372725598040992e-01
+eigen value  14: 2.137417032232983294e-01
+eigen value  15: 2.137609597133198758e-01
+eigen value  16: 3.444633137639693254e-01
+eigen value  17: 4.421171360846244958e-01
+eigen value  18: 4.538086082912643482e-01
+eigen value  19: 4.539672793109364446e-01
+eigen value  20: 5.025320463653386582e-01
+eigen value  21: 5.101760042296445974e-01
+eigen value  22: 5.513355489977632695e-01
+eigen value  23: 5.711029216468231917e-01
+eigen value  24: 6.574761275669961380e-01
+eigen value  25: 6.605939006390576518e-01
+eigen value  26: 6.787048410877418725e-01
+eigen value  27: 7.061127951456245277e-01
+eigen value  28: 7.069652139521728218e-01
+eigen value  29: 7.342244326494726803e-01
+eigen value  30: 7.668007844854537458e-01
+eigen value  31: 7.781413096048328537e-01
+eigen value  32: 7.869117684728609285e-01
+eigen value  33: 8.057539871535462916e-01
+eigen value  34: 8.448129926715182147e-01
+eigen value  35: 8.707939219914849760e-01
+eigen value  36: 9.137001845274421719e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.843697233936677060e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 6.665600210111815790e-03
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:6.665600210111815790e-03
+Beginning Chebyshev filter pass 6 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  9.1370018453e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.152e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 6.275745362521177329e-08
+eigen vector 1: 2.411490048092026548e-07
+eigen vector 2: 1.361260361769255511e-06
+eigen vector 3: 2.971091772527723582e-06
+eigen vector 4: 3.262288629756053801e-06
+eigen vector 5: 2.940812338458420522e-06
+eigen vector 6: 4.403218123997804208e-06
+eigen vector 7: 2.720343218159229206e-05
+eigen vector 8: 1.154988402415365836e-05
+eigen vector 9: 1.122897279831643595e-04
+eigen vector 10: 1.592318121469940792e-05
+eigen vector 11: 9.837795540333937893e-05
+eigen vector 12: 2.683575473542985424e-04
+eigen vector 13: 3.833670131381586017e-04
+eigen vector 14: 8.185607542085360071e-05
+eigen vector 15: 3.199586721532573304e-04
+eigen vector 16: 1.348807381505717686e-03
+eigen vector 17: 3.704867444507911091e-03
+eigen vector 18: 8.369614724117544890e-05
+eigen vector 19: 2.084926827755321718e-03
+eigen vector 20: 2.002564113081826535e-03
+eigen vector 21: 1.705413273733790867e-03
+eigen vector 22: 1.139792729075466164e-03
+eigen vector 23: 1.639171754890524253e-03
+eigen vector 24: 7.613434238039379527e-04
+eigen vector 25: 1.160666572648499234e-02
+eigen vector 26: 9.773567442576789818e-03
+eigen vector 27: 2.302040135244333516e-03
+eigen vector 28: 7.761734081631579268e-03
+eigen vector 29: 1.828520675553261697e-03
+eigen vector 30: 8.002562977564704055e-03
+eigen vector 31: 1.179885719040999099e-02
+eigen vector 32: 1.158132914295620201e-02
+eigen vector 33: 3.215928646508396660e-02
+eigen vector 34: 2.285354237545477590e-02
+eigen vector 35: 3.759955126506376449e-02
+eigen vector 36: 1.086989909865829912e-02
+
+eigen value   0: -1.618037651670674260e+00
+eigen value   1: -7.631990182583056059e-01
+eigen value   2: -7.631990182569161618e-01
+eigen value   3: -7.502679532793753436e-01
+eigen value   4: -5.470206088980292813e-01
+eigen value   5: -3.777984753345378088e-01
+eigen value   6: -3.677737837223450934e-01
+eigen value   7: -1.907375280045776195e-02
+eigen value   8: -9.587562393890388182e-03
+eigen value   9: -9.587547984019116273e-03
+eigen value  10: 1.721711328154512666e-01
+eigen value  11: 1.721711446740719076e-01
+eigen value  12: 1.904383596437220494e-01
+eigen value  13: 2.089263978131813970e-01
+eigen value  14: 2.137404919709307571e-01
+eigen value  15: 2.137406361156692913e-01
+eigen value  16: 3.443777969403135075e-01
+eigen value  17: 4.416964294561092075e-01
+eigen value  18: 4.538070594447687345e-01
+eigen value  19: 4.538182631642876386e-01
+eigen value  20: 5.023473001846846531e-01
+eigen value  21: 5.096920796767443473e-01
+eigen value  22: 5.512997377016928269e-01
+eigen value  23: 5.709245548582724261e-01
+eigen value  24: 6.574143010583465285e-01
+eigen value  25: 6.581893737679965772e-01
+eigen value  26: 6.771205106780325833e-01
+eigen value  27: 7.056377517489148543e-01
+eigen value  28: 7.060864060556318877e-01
+eigen value  29: 7.338748330510067586e-01
+eigen value  30: 7.661290058364832456e-01
+eigen value  31: 7.775953215420630116e-01
+eigen value  32: 7.783826247573636392e-01
+eigen value  33: 7.927379409329320392e-01
+eigen value  34: 8.378109354173867152e-01
+eigen value  35: 8.502109207174718408e-01
+eigen value  36: 8.684899015958184032e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842842056846499932e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 1.348807381505717686e-03
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:1.348807381505717686e-03
+Beginning Chebyshev filter pass 7 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6848990160e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.113e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 5.572818931009483345e-10
+eigen vector 1: 1.323257813637094256e-08
+eigen vector 2: 3.210471979603100409e-08
+eigen vector 3: 7.518528653917142404e-08
+eigen vector 4: 1.029944438852937377e-07
+eigen vector 5: 1.040209734906952756e-07
+eigen vector 6: 1.347848930815582427e-07
+eigen vector 7: 1.698810209425967595e-06
+eigen vector 8: 4.637738300896573784e-07
+eigen vector 9: 9.042305640959614574e-06
+eigen vector 10: 1.087818803220228257e-06
+eigen vector 11: 8.589252230025149054e-06
+eigen vector 12: 3.284778356256086993e-05
+eigen vector 13: 4.962552565164876823e-05
+eigen vector 14: 4.211554682784177365e-06
+eigen vector 15: 3.789036195953429014e-05
+eigen vector 16: 2.406762763258950787e-04
+eigen vector 17: 8.567013401224711716e-04
+eigen vector 18: 1.256176123586458161e-05
+eigen vector 19: 4.931663880448062089e-04
+eigen vector 20: 5.284755176189634635e-04
+eigen vector 21: 2.497736191398782640e-04
+eigen vector 22: 3.594393102999532386e-04
+eigen vector 23: 4.698986258860774552e-04
+eigen vector 24: 2.642027513234677981e-04
+eigen vector 25: 5.465201642044344166e-03
+eigen vector 26: 4.800523281162975830e-03
+eigen vector 27: 6.779592329617567699e-04
+eigen vector 28: 4.327805223048894132e-03
+eigen vector 29: 7.340220425509114436e-04
+eigen vector 30: 6.993072900252998367e-03
+eigen vector 31: 6.229705088707926733e-03
+eigen vector 32: 5.328628867546076828e-03
+eigen vector 33: 2.310985166822904918e-02
+eigen vector 34: 1.711845338865484317e-02
+eigen vector 35: 2.404548454206014221e-02
+eigen vector 36: 9.353968192035861870e-03
+
+eigen value   0: -1.618037651670672483e+00
+eigen value   1: -7.631990182583692217e-01
+eigen value   2: -7.631990182580372650e-01
+eigen value   3: -7.502679532848799404e-01
+eigen value   4: -5.470206089054711063e-01
+eigen value   5: -3.777984753410059682e-01
+eigen value   6: -3.677737837365532281e-01
+eigen value   7: -1.907375357760733581e-02
+eigen value   8: -9.587562508495711677e-03
+eigen value   9: -9.587562414497645402e-03
+eigen value  10: 1.721711325522215230e-01
+eigen value  11: 1.721711326506718820e-01
+eigen value  12: 1.904382521408261031e-01
+eigen value  13: 2.089261701529895321e-01
+eigen value  14: 2.137404838275155095e-01
+eigen value  15: 2.137404860128326867e-01
+eigen value  16: 3.443742455142475012e-01
+eigen value  17: 4.416635251521285888e-01
+eigen value  18: 4.538070509642297412e-01
+eigen value  19: 4.538076594817484488e-01
+eigen value  20: 5.023366844902580342e-01
+eigen value  21: 5.096868694020572077e-01
+eigen value  22: 5.512956926806081848e-01
+eigen value  23: 5.709166090729910215e-01
+eigen value  24: 6.574136859548178613e-01
+eigen value  25: 6.575702948580168794e-01
+eigen value  26: 6.766591632854718208e-01
+eigen value  27: 7.056265455302181966e-01
+eigen value  28: 7.057570877001835274e-01
+eigen value  29: 7.338693012656321013e-01
+eigen value  30: 7.655989278284033306e-01
+eigen value  31: 7.771083656553835484e-01
+eigen value  32: 7.780736585484525625e-01
+eigen value  33: 7.851974837778108451e-01
+eigen value  34: 8.343590004523722126e-01
+eigen value  35: 8.465378559290835936e-01
+eigen value  36: 8.683918671131788392e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842806541717328495e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 2.406762763258950787e-04
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:2.406762763258950787e-04
+Beginning Chebyshev filter pass 8 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6839186711e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.105e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 4.703889811153318414e-12
+eigen vector 1: 3.188275578481184450e-10
+eigen vector 2: 7.747367983833062722e-10
+eigen vector 3: 1.845776626035916713e-09
+eigen vector 4: 3.369909751038961929e-09
+eigen vector 5: 4.357010609185900070e-09
+eigen vector 6: 5.677962720441820971e-09
+eigen vector 7: 1.315354888274350033e-07
+eigen vector 8: 1.504472838314700053e-07
+eigen vector 9: 7.051802407335535503e-07
+eigen vector 10: 1.655371592429914680e-07
+eigen vector 11: 9.553581707306490110e-07
+eigen vector 12: 3.904163707914805312e-06
+eigen vector 13: 6.141016279761837126e-06
+eigen vector 14: 4.467723256197436066e-07
+eigen vector 15: 4.716253287390867286e-06
+eigen vector 16: 4.060556656833904645e-05
+eigen vector 17: 1.852884270677776859e-04
+eigen vector 18: 2.508235992962397232e-06
+eigen vector 19: 1.101568167372412270e-04
+eigen vector 20: 1.348902495184015776e-04
+eigen vector 21: 6.016474886929821261e-05
+eigen vector 22: 1.065445004242560176e-04
+eigen vector 23: 1.473944141925290349e-04
+eigen vector 24: 9.933254522465168545e-05
+eigen vector 25: 2.343625987525980482e-03
+eigen vector 26: 2.200613302767507815e-03
+eigen vector 27: 2.975517537111573539e-04
+eigen vector 28: 2.246159736656804309e-03
+eigen vector 29: 3.689751877369608617e-04
+eigen vector 30: 5.510617005388768197e-03
+eigen vector 31: 3.709139690992053259e-03
+eigen vector 32: 5.795961732759927036e-03
+eigen vector 33: 1.507590167655392666e-02
+eigen vector 34: 1.341002857028957516e-02
+eigen vector 35: 2.045506918577017635e-02
+eigen vector 36: 9.069698121499878904e-03
+
+eigen value   0: -1.618037651670673371e+00
+eigen value   1: -7.631990182583681115e-01
+eigen value   2: -7.631990182580390414e-01
+eigen value   3: -7.502679532848846033e-01
+eigen value   4: -5.470206089054788778e-01
+eigen value   5: -3.777984753410145724e-01
+eigen value   6: -3.677737837365662177e-01
+eigen value   7: -1.907375358080821634e-02
+eigen value   8: -9.587562508647843457e-03
+eigen value   9: -9.587562508151702134e-03
+eigen value  10: 1.721711325513989310e-01
+eigen value  11: 1.721711325526246728e-01
+eigen value  12: 1.904382505411953697e-01
+eigen value  13: 2.089261663910058631e-01
+eigen value  14: 2.137404838139516372e-01
+eigen value  15: 2.137404838478050850e-01
+eigen value  16: 3.443741347480742676e-01
+eigen value  17: 4.416618200908912772e-01
+eigen value  18: 4.538070508391501279e-01
+eigen value  19: 4.538070806178489125e-01
+eigen value  20: 5.023359481213961475e-01
+eigen value  21: 5.096867674432647988e-01
+eigen value  22: 5.512953018653573567e-01
+eigen value  23: 5.709159169056953198e-01
+eigen value  24: 6.574136283380744850e-01
+eigen value  25: 6.574409710596789136e-01
+eigen value  26: 6.765521851767880568e-01
+eigen value  27: 7.056261638186176466e-01
+eigen value  28: 7.056591335868878101e-01
+eigen value  29: 7.338688017328489632e-01
+eigen value  30: 7.652191705809617828e-01
+eigen value  31: 7.770773535459412074e-01
+eigen value  32: 7.778450187616716693e-01
+eigen value  33: 7.815546136050678383e-01
+eigen value  34: 8.322347954048143759e-01
+eigen value  35: 8.462252718853909839e-01
+eigen value  36: 8.683852385647440331e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805434007979803e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 4.060556656833904645e-05
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:4.060556656833904645e-05
+Beginning Chebyshev filter pass 9 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6838523856e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.100e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 7.399579568519316588e-14
+eigen vector 1: 7.551474854585505518e-12
+eigen vector 2: 1.814442619001361072e-11
+eigen vector 3: 4.407178730071312382e-11
+eigen vector 4: 1.074052621646198752e-10
+eigen vector 5: 1.787725474938263058e-10
+eigen vector 6: 2.359778231854008883e-10
+eigen vector 7: 9.975693278236983268e-09
+eigen vector 8: 4.922005236602288485e-08
+eigen vector 9: 2.623736733807534353e-08
+eigen vector 10: 8.058367907993644714e-08
+eigen vector 11: 6.989064859192365081e-08
+eigen vector 12: 4.498311740536660180e-07
+eigen vector 13: 7.362689291027409613e-07
+eigen vector 14: 9.499856111682881742e-08
+eigen vector 15: 5.646742356529467790e-07
+eigen vector 16: 6.625089443987572897e-06
+eigen vector 17: 3.865762220357938240e-05
+eigen vector 18: 5.074023217802803513e-07
+eigen vector 19: 2.373721623827997759e-05
+eigen vector 20: 3.321366206376532421e-05
+eigen vector 21: 1.464863145794438403e-05
+eigen vector 22: 3.034287523992197600e-05
+eigen vector 23: 4.455708703834234069e-05
+eigen vector 24: 3.761106674360422411e-05
+eigen vector 25: 9.526085987845502338e-04
+eigen vector 26: 9.602886429340781608e-04
+eigen vector 27: 1.328506912427823369e-04
+eigen vector 28: 1.102431021375583882e-03
+eigen vector 29: 1.866929444653537380e-04
+eigen vector 30: 3.800814891241437437e-03
+eigen vector 31: 2.240438758240405771e-03
+eigen vector 32: 5.661412541453356324e-03
+eigen vector 33: 8.909520770656849734e-03
+eigen vector 34: 1.067754408385945125e-02
+eigen vector 35: 1.760757769000220394e-02
+eigen vector 36: 8.854286507443218796e-03
+
+eigen value   0: -1.618037651670674260e+00
+eigen value   1: -7.631990182583695548e-01
+eigen value   2: -7.631990182580383753e-01
+eigen value   3: -7.502679532848834931e-01
+eigen value   4: -5.470206089054779897e-01
+eigen value   5: -3.777984753410141283e-01
+eigen value   6: -3.677737837365676610e-01
+eigen value   7: -1.907375358082686115e-02
+eigen value   8: -9.587562508815112433e-03
+eigen value   9: -9.587562508573847092e-03
+eigen value  10: 1.721711325512145785e-01
+eigen value  11: 1.721711325515599134e-01
+eigen value  12: 1.904382505188152164e-01
+eigen value  13: 2.089261663339950781e-01
+eigen value  14: 2.137404838138037277e-01
+eigen value  15: 2.137404838144911501e-01
+eigen value  16: 3.443741316360536264e-01
+eigen value  17: 4.416617416336492963e-01
+eigen value  18: 4.538070508342716414e-01
+eigen value  19: 4.538070522035063115e-01
+eigen value  20: 5.023359008372642043e-01
+eigen value  21: 5.096867612746096565e-01
+eigen value  22: 5.512952682323148945e-01
+eigen value  23: 5.709158499563643518e-01
+eigen value  24: 6.574136202390935546e-01
+eigen value  25: 6.574180260009885313e-01
+eigen value  26: 6.765304371437015352e-01
+eigen value  27: 7.056260941050088720e-01
+eigen value  28: 7.056337606148862518e-01
+eigen value  29: 7.338686693050017196e-01
+eigen value  30: 7.650072575459156976e-01
+eigen value  31: 7.770675995937290637e-01
+eigen value  32: 7.775334033688191537e-01
+eigen value  33: 7.801174095823742993e-01
+eigen value  34: 8.308568187538495353e-01
+eigen value  35: 8.460454169029318905e-01
+eigen value  36: 8.683803760592050391e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402885525745e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 6.625089443987572897e-06
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:6.625089443987572897e-06
+Beginning Chebyshev filter pass 10 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6838037606e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.095e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.492618630697326330e-14
+eigen vector 1: 1.906992475521336943e-13
+eigen vector 2: 4.254021310195723445e-13
+eigen vector 3: 1.039345815871652815e-12
+eigen vector 4: 3.375570549444470912e-12
+eigen vector 5: 7.242118330588506218e-12
+eigen vector 6: 9.695110345893873091e-12
+eigen vector 7: 7.456064563500217287e-10
+eigen vector 8: 3.762539039390916289e-09
+eigen vector 9: 1.972690406576759879e-09
+eigen vector 10: 8.922308189021340673e-09
+eigen vector 11: 7.388804268611972899e-09
+eigen vector 12: 5.099130274715605662e-08
+eigen vector 13: 8.683348686330348085e-08
+eigen vector 14: 2.684694078661678988e-08
+eigen vector 15: 6.262650236232958189e-08
+eigen vector 16: 1.062400806833988371e-06
+eigen vector 17: 7.918211072934127614e-06
+eigen vector 18: 1.039625595209510352e-07
+eigen vector 19: 5.021167269197714485e-06
+eigen vector 20: 8.026240262615550762e-06
+eigen vector 21: 3.547077252042266898e-06
+eigen vector 22: 8.466456257205820740e-06
+eigen vector 23: 1.319464145931872790e-05
+eigen vector 24: 1.428661449414062356e-05
+eigen vector 25: 3.770425213580122763e-04
+eigen vector 26: 4.077613492888689070e-04
+eigen vector 27: 5.960601056737455604e-05
+eigen vector 28: 5.242919092640096514e-04
+eigen vector 29: 9.471167337231496100e-05
+eigen vector 30: 2.415970576741878137e-03
+eigen vector 31: 1.358236333544073950e-03
+eigen vector 32: 4.344534794189208043e-03
+eigen vector 33: 5.186291095481597446e-03
+eigen vector 34: 8.543509327837041714e-03
+eigen vector 35: 1.519702903074248747e-02
+eigen vector 36: 8.679648782871172280e-03
+
+eigen value   0: -1.618037651670673149e+00
+eigen value   1: -7.631990182583688886e-01
+eigen value   2: -7.631990182580342674e-01
+eigen value   3: -7.502679532848824939e-01
+eigen value   4: -5.470206089054783227e-01
+eigen value   5: -3.777984753410144614e-01
+eigen value   6: -3.677737837365658846e-01
+eigen value   7: -1.907375358082825587e-02
+eigen value   8: -9.587562508818302590e-03
+eigen value   9: -9.587562508574631187e-03
+eigen value  10: 1.721711325512055024e-01
+eigen value  11: 1.721711325515540014e-01
+eigen value  12: 1.904382505185200636e-01
+eigen value  13: 2.089261663331801744e-01
+eigen value  14: 2.137404838137757224e-01
+eigen value  15: 2.137404838140324337e-01
+eigen value  16: 3.443741315537602321e-01
+eigen value  17: 4.416617382462930674e-01
+eigen value  18: 4.538070508340712461e-01
+eigen value  19: 4.538070508948354731e-01
+eigen value  20: 5.023358979921237477e-01
+eigen value  21: 5.096867608987317722e-01
+eigen value  22: 5.512952655326114337e-01
+eigen value  23: 5.709158438953998438e-01
+eigen value  24: 6.574136190784417577e-01
+eigen value  25: 6.574143008866075721e-01
+eigen value  26: 6.765263726906425301e-01
+eigen value  27: 7.056260802221503425e-01
+eigen value  28: 7.056277838449954709e-01
+eigen value  29: 7.338686342242131122e-01
+eigen value  30: 7.649130694723869084e-01
+eigen value  31: 7.770640842209809440e-01
+eigen value  32: 7.772867219974100017e-01
+eigen value  33: 7.796246483851083653e-01
+eigen value  34: 8.299563532020931556e-01
+eigen value  35: 8.459172113255402081e-01
+eigen value  36: 8.683764739282542333e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402062496323e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 1.062400806833988371e-06
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:1.062400806833988371e-06
+Beginning Chebyshev filter pass 11 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6837647393e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.100e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.038073574536016065e-14
+eigen vector 1: 7.724709093293605562e-14
+eigen vector 2: 7.499404581797575594e-14
+eigen vector 3: 6.989382676342436768e-14
+eigen vector 4: 1.251360284649286098e-13
+eigen vector 5: 2.997198282957624214e-13
+eigen vector 6: 4.019656614540189810e-13
+eigen vector 7: 5.529857309320984165e-11
+eigen vector 8: 2.837826979039042259e-10
+eigen vector 9: 1.499464310218612957e-10
+eigen vector 10: 9.623676277947189572e-10
+eigen vector 11: 7.967265786230355136e-10
+eigen vector 12: 5.731122949656551782e-09
+eigen vector 13: 1.015310646325744206e-08
+eigen vector 14: 3.234175936022610593e-09
+eigen vector 15: 7.363057789061337657e-09
+eigen vector 16: 1.688363214430770223e-07
+eigen vector 17: 1.606483788066700085e-06
+eigen vector 18: 8.359095418689083421e-08
+eigen vector 19: 1.048889566813487350e-06
+eigen vector 20: 1.920792948400741594e-06
+eigen vector 21: 8.560764511057991436e-07
+eigen vector 22: 2.337686002700903161e-06
+eigen vector 23: 3.866192361127843597e-06
+eigen vector 24: 5.437497333586386079e-06
+eigen vector 25: 1.472611777089111293e-04
+eigen vector 26: 1.707154553478630609e-04
+eigen vector 27: 2.682515331150408115e-05
+eigen vector 28: 2.453093202803484992e-04
+eigen vector 29: 4.812603427791546667e-05
+eigen vector 30: 1.473146497423237413e-03
+eigen vector 31: 8.255510545603272823e-04
+eigen vector 32: 2.936429591176416363e-03
+eigen vector 33: 3.126658801105015699e-03
+eigen vector 34: 6.836388301223113827e-03
+eigen vector 35: 1.313954289514084918e-02
+eigen vector 36: 8.533583178328916705e-03
+
+eigen value   0: -1.618037651670672483e+00
+eigen value   1: -7.631990182583712201e-01
+eigen value   2: -7.631990182580391524e-01
+eigen value   3: -7.502679532848829380e-01
+eigen value   4: -5.470206089054774345e-01
+eigen value   5: -3.777984753410145169e-01
+eigen value   6: -3.677737837365670504e-01
+eigen value   7: -1.907375358082821423e-02
+eigen value   8: -9.587562508818311263e-03
+eigen value   9: -9.587562508575378853e-03
+eigen value  10: 1.721711325512044199e-01
+eigen value  11: 1.721711325515547786e-01
+eigen value  12: 1.904382505185155672e-01
+eigen value  13: 2.089261663331682117e-01
+eigen value  14: 2.137404838137738905e-01
+eigen value  15: 2.137404838140253005e-01
+eigen value  16: 3.443741315516515855e-01
+eigen value  17: 4.416617381047526214e-01
+eigen value  18: 4.538070508340509290e-01
+eigen value  19: 4.538070508365273370e-01
+eigen value  20: 5.023358978265961561e-01
+eigen value  21: 5.096867608763098190e-01
+eigen value  22: 5.512952653234960421e-01
+eigen value  23: 5.709158433662397947e-01
+eigen value  24: 6.574136189110814099e-01
+eigen value  25: 6.574137222725099372e-01
+eigen value  26: 6.765256467827843734e-01
+eigen value  27: 7.056260774278124703e-01
+eigen value  28: 7.056264471397915017e-01
+eigen value  29: 7.338686250007917522e-01
+eigen value  30: 7.648762710040744039e-01
+eigen value  31: 7.770628015050273785e-01
+eigen value  32: 7.771569436153693555e-01
+eigen value  33: 7.794520261140696071e-01
+eigen value  34: 8.293696668090408952e-01
+eigen value  35: 8.458235426876428154e-01
+eigen value  36: 8.683732581110790161e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402041405971e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 1.688363214430770223e-07
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:1.688363214430770223e-07
+Beginning Chebyshev filter pass 12 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6837325811e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.140e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.331766292204499389e-14
+eigen vector 1: 7.702444919604031273e-14
+eigen vector 2: 7.444315286275131947e-14
+eigen vector 3: 5.909584519978700647e-14
+eigen vector 4: 5.669874927192229656e-14
+eigen vector 5: 6.271946334407778801e-14
+eigen vector 6: 6.270345751391246407e-14
+eigen vector 7: 4.085126130832598898e-12
+eigen vector 8: 2.136099364218987489e-11
+eigen vector 9: 1.124972797362389176e-11
+eigen vector 10: 1.033774074206962580e-10
+eigen vector 11: 8.561932090646538872e-11
+eigen vector 12: 6.411671121226953976e-10
+eigen vector 13: 1.181620853099306336e-09
+eigen vector 14: 3.789713929277351823e-10
+eigen vector 15: 8.656480902686313243e-10
+eigen vector 16: 2.670046872181396677e-08
+eigen vector 17: 3.242621394634720204e-07
+eigen vector 18: 1.745609803315614427e-07
+eigen vector 19: 1.327740794953375788e-07
+eigen vector 20: 4.572745002286130637e-07
+eigen vector 21: 2.062555920684714632e-07
+eigen vector 22: 6.418606507359370922e-07
+eigen vector 23: 1.126508519585104758e-06
+eigen vector 24: 2.072313331684175000e-06
+eigen vector 25: 5.711934285261199617e-05
+eigen vector 26: 7.094731236653610345e-05
+eigen vector 27: 1.209946979820566201e-05
+eigen vector 28: 1.138162728927691824e-04
+eigen vector 29: 2.448459335541768115e-05
+eigen vector 30: 8.805297706023459438e-04
+eigen vector 31: 5.028239116200438914e-04
+eigen vector 32: 1.887734378136648366e-03
+eigen vector 33: 1.931931918774976685e-03
+eigen vector 34: 5.462672728847043496e-03
+eigen vector 35: 1.137581813145444563e-02
+eigen vector 36: 8.408793023169377351e-03
+
+eigen value   0: -1.618037651670675148e+00
+eigen value   1: -7.631990182583715532e-01
+eigen value   2: -7.631990182580361548e-01
+eigen value   3: -7.502679532848834931e-01
+eigen value   4: -5.470206089054777676e-01
+eigen value   5: -3.777984753410150720e-01
+eigen value   6: -3.677737837365661622e-01
+eigen value   7: -1.907375358082822811e-02
+eigen value   8: -9.587562508818599227e-03
+eigen value   9: -9.587562508575023235e-03
+eigen value  10: 1.721711325512052804e-01
+eigen value  11: 1.721711325515543900e-01
+eigen value  12: 1.904382505185162056e-01
+eigen value  13: 2.089261663331679619e-01
+eigen value  14: 2.137404838137755558e-01
+eigen value  15: 2.137404838140252727e-01
+eigen value  16: 3.443741315515983503e-01
+eigen value  17: 4.416617380989408259e-01
+eigen value  18: 4.538070508338134523e-01
+eigen value  19: 4.538070508342084142e-01
+eigen value  20: 5.023358978171326150e-01
+eigen value  21: 5.096867608749888756e-01
+eigen value  22: 5.512952653075952059e-01
+eigen value  23: 5.709158433208980643e-01
+eigen value  24: 6.574136188868545672e-01
+eigen value  25: 6.574136343858322240e-01
+eigen value  26: 6.765255201511040095e-01
+eigen value  27: 7.056260768620089552e-01
+eigen value  28: 7.056261560986223369e-01
+eigen value  29: 7.338686225862628421e-01
+eigen value  30: 7.648627919368033989e-01
+eigen value  31: 7.770623302971674251e-01
+eigen value  32: 7.771000964505014874e-01
+eigen value  33: 7.793875984046072514e-01
+eigen value  34: 8.289897766945067970e-01
+eigen value  35: 8.457543274539577327e-01
+eigen value  36: 8.683705575718075886e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402040873619e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 2.670046872181396677e-08
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:2.670046872181396677e-08
+Beginning Chebyshev filter pass 13 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6837055757e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.136e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.213585297508713324e-14
+eigen vector 1: 7.353020476483538711e-14
+eigen vector 2: 7.522580110336934518e-14
+eigen vector 3: 6.072272365071362813e-14
+eigen vector 4: 4.019442972459639696e-14
+eigen vector 5: 6.063020419236482102e-14
+eigen vector 6: 6.117130306502415580e-14
+eigen vector 7: 3.082012314809895230e-13
+eigen vector 8: 1.603997246673536241e-12
+eigen vector 9: 8.457294626427974703e-13
+eigen vector 10: 1.110514518113335424e-11
+eigen vector 11: 9.151673171967715146e-12
+eigen vector 12: 7.154179767732932509e-11
+eigen vector 13: 1.371522229727152245e-10
+eigen vector 14: 4.451481001016512665e-11
+eigen vector 15: 1.014216759770096605e-10
+eigen vector 16: 4.210836195245226394e-09
+eigen vector 17: 6.526220555183976302e-08
+eigen vector 18: 3.940394982330201589e-08
+eigen vector 19: 2.291290599549189999e-08
+eigen vector 20: 1.085420975565649030e-07
+eigen vector 21: 4.965086288317444159e-08
+eigen vector 22: 1.756873474860039122e-07
+eigen vector 23: 3.272173455043568666e-07
+eigen vector 24: 7.905809540848177986e-07
+eigen vector 25: 2.207186849917527964e-05
+eigen vector 26: 2.936709346053321571e-05
+eigen vector 27: 5.467193073083458691e-06
+eigen vector 28: 5.257125263446387424e-05
+eigen vector 29: 1.246948934186435729e-05
+eigen vector 30: 5.213057014796118214e-04
+eigen vector 31: 3.067876829126441746e-04
+eigen vector 32: 1.188973905681129121e-03
+eigen vector 33: 1.206009894981395058e-03
+eigen vector 34: 4.358422016841669369e-03
+eigen vector 35: 9.859429461263219743e-03
+eigen vector 36: 8.300453440705365601e-03
+
+eigen value   0: -1.618037651670673371e+00
+eigen value   1: -7.631990182583678894e-01
+eigen value   2: -7.631990182580372650e-01
+eigen value   3: -7.502679532848831601e-01
+eigen value   4: -5.470206089054797660e-01
+eigen value   5: -3.777984753410141838e-01
+eigen value   6: -3.677737837365656071e-01
+eigen value   7: -1.907375358082700340e-02
+eigen value   8: -9.587562508818488205e-03
+eigen value   9: -9.587562508575436099e-03
+eigen value  10: 1.721711325512056412e-01
+eigen value  11: 1.721711325515546953e-01
+eigen value  12: 1.904382505185154284e-01
+eigen value  13: 2.089261663331670738e-01
+eigen value  14: 2.137404838137753893e-01
+eigen value  15: 2.137404838140246344e-01
+eigen value  16: 3.443741315515973511e-01
+eigen value  17: 4.416617380987021835e-01
+eigen value  18: 4.538070508337357922e-01
+eigen value  19: 4.538070508341755516e-01
+eigen value  20: 5.023358978165964883e-01
+eigen value  21: 5.096867608749100498e-01
+eigen value  22: 5.512952653063970532e-01
+eigen value  23: 5.709158433170521407e-01
+eigen value  24: 6.574136188833377137e-01
+eigen value  25: 6.574136211931481677e-01
+eigen value  26: 6.765254983339290540e-01
+eigen value  27: 7.056260767469290096e-01
+eigen value  28: 7.056260936130032135e-01
+eigen value  29: 7.338686219552976731e-01
+eigen value  30: 7.648580060299215999e-01
+eigen value  31: 7.770621562766936163e-01
+eigen value  32: 7.770769600366745911e-01
+eigen value  33: 7.793626976213855473e-01
+eigen value  34: 8.287452670948534106e-01
+eigen value  35: 8.457028110375213181e-01
+eigen value  36: 8.683682544229770484e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402040863627e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 4.210836195245226394e-09
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:4.210836195245226394e-09
+Beginning Chebyshev filter pass 14 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6836825442e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.081e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.133593017926238303e-14
+eigen vector 1: 7.324478926981381903e-14
+eigen vector 2: 7.030524915840146099e-14
+eigen vector 3: 5.809325148318625020e-14
+eigen vector 4: 4.064367446913463891e-14
+eigen vector 5: 5.820819583041277329e-14
+eigen vector 6: 5.631441021433029879e-14
+eigen vector 7: 6.734729959152464735e-14
+eigen vector 8: 1.380118609505120130e-13
+eigen vector 9: 9.355032749679519005e-14
+eigen vector 10: 1.188500430993895392e-12
+eigen vector 11: 9.847457492432797768e-13
+eigen vector 12: 7.970753814727795621e-12
+eigen vector 13: 1.589453057116667869e-11
+eigen vector 14: 5.140495856590162263e-12
+eigen vector 15: 1.190114800764012538e-11
+eigen vector 16: 6.629922117371409362e-10
+eigen vector 17: 1.311270671637994679e-08
+eigen vector 18: 8.203505921055624279e-09
+eigen vector 19: 4.705652424187076390e-09
+eigen vector 20: 2.572021573619885525e-08
+eigen vector 21: 1.194756792801475951e-08
+eigen vector 22: 4.800122771909618139e-08
+eigen vector 23: 9.487649031841040452e-08
+eigen vector 24: 3.018576272526095761e-07
+eigen vector 25: 8.510546727248243198e-06
+eigen vector 26: 1.212830125044567027e-05
+eigen vector 27: 2.474069915341557547e-06
+eigen vector 28: 2.422185608777225325e-05
+eigen vector 29: 6.355898965131027475e-06
+eigen vector 30: 3.071759434137878719e-04
+eigen vector 31: 1.874540464637781218e-04
+eigen vector 32: 7.421799319090904064e-04
+eigen vector 33: 7.552704260550249706e-04
+eigen vector 34: 3.473277859845261273e-03
+eigen vector 35: 8.552783128298257001e-03
+eigen vector 36: 8.205158903136142851e-03
+
+eigen value   0: -1.618037651670674260e+00
+eigen value   1: -7.631990182583719973e-01
+eigen value   2: -7.631990182580391524e-01
+eigen value   3: -7.502679532848848254e-01
+eigen value   4: -5.470206089054796550e-01
+eigen value   5: -3.777984753410136287e-01
+eigen value   6: -3.677737837365668283e-01
+eigen value   7: -1.907375358082843281e-02
+eigen value   8: -9.587562508818930559e-03
+eigen value   9: -9.587562508575423956e-03
+eigen value  10: 1.721711325512054469e-01
+eigen value  11: 1.721711325515548618e-01
+eigen value  12: 1.904382505185181484e-01
+eigen value  13: 2.089261663331684893e-01
+eigen value  14: 2.137404838137745011e-01
+eigen value  15: 2.137404838140254670e-01
+eigen value  16: 3.443741315515969625e-01
+eigen value  17: 4.416617380986921915e-01
+eigen value  18: 4.538070508337317954e-01
+eigen value  19: 4.538070508341741083e-01
+eigen value  20: 5.023358978165679556e-01
+eigen value  21: 5.096867608749066081e-01
+eigen value  22: 5.512952653063076802e-01
+eigen value  23: 5.709158433167300650e-01
+eigen value  24: 6.574136188828266780e-01
+eigen value  25: 6.574136192256871958e-01
+eigen value  26: 6.765254946007847048e-01
+eigen value  27: 7.056260767234374676e-01
+eigen value  28: 7.056260802994682724e-01
+eigen value  29: 7.338686217904774045e-01
+eigen value  30: 7.648563324870336633e-01
+eigen value  31: 7.770620917280621764e-01
+eigen value  32: 7.770678325258442154e-01
+eigen value  33: 7.793529483635226462e-01
+eigen value  34: 8.285886417967853745e-01
+eigen value  35: 8.456642756309956654e-01
+eigen value  36: 8.683662635760845960e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402040859741e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 6.629922117371409362e-10
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:6.629922117371409362e-10
+Beginning Chebyshev filter pass 15 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6836626358e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.079e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.142739363537369111e-14
+eigen vector 1: 7.554050143347294954e-14
+eigen vector 2: 6.954568966869948302e-14
+eigen vector 3: 5.502208058854849079e-14
+eigen vector 4: 4.183822252695793582e-14
+eigen vector 5: 6.321246710094113352e-14
+eigen vector 6: 6.304598036575483941e-14
+eigen vector 7: 5.404127791292378474e-14
+eigen vector 8: 6.894255664579843181e-14
+eigen vector 9: 6.983604204887204244e-14
+eigen vector 10: 1.423911986211499462e-13
+eigen vector 11: 1.227424457770821621e-13
+eigen vector 12: 8.897574006806331784e-13
+eigen vector 13: 1.841819262911856680e-12
+eigen vector 14: 6.096386928322755923e-13
+eigen vector 15: 1.391440445520203902e-12
+eigen vector 16: 1.042840973946838467e-10
+eigen vector 17: 2.631955085138295916e-09
+eigen vector 18: 1.697758849240366525e-09
+eigen vector 19: 9.798178528005094759e-10
+eigen vector 20: 6.088384417710273346e-09
+eigen vector 21: 2.874580707076398649e-09
+eigen vector 22: 1.310057484099572738e-08
+eigen vector 23: 2.747990254116229292e-08
+eigen vector 24: 1.155261367253464622e-07
+eigen vector 25: 3.277310596583031254e-06
+eigen vector 26: 5.002157127830977603e-06
+eigen vector 27: 1.121065410101234882e-06
+eigen vector 28: 1.114387407825653444e-05
+eigen vector 29: 3.242049809159615516e-06
+eigen vector 30: 1.805585005870284144e-04
+eigen vector 31: 1.146819669333295290e-04
+eigen vector 32: 4.613565825361229692e-04
+eigen vector 33: 4.732544928072150042e-04
+eigen vector 34: 2.765646050187068987e-03
+eigen vector 35: 7.424864861451144563e-03
+eigen vector 36: 8.120395629146742386e-03
+
+eigen value   0: -1.618037651670672261e+00
+eigen value   1: -7.631990182583697768e-01
+eigen value   2: -7.631990182580383753e-01
+eigen value   3: -7.502679532848852695e-01
+eigen value   4: -5.470206089054774345e-01
+eigen value   5: -3.777984753410132956e-01
+eigen value   6: -3.677737837365658291e-01
+eigen value   7: -1.907375358082838424e-02
+eigen value   8: -9.587562508818875048e-03
+eigen value   9: -9.587562508576650405e-03
+eigen value  10: 1.721711325512055302e-01
+eigen value  11: 1.721711325515542235e-01
+eigen value  12: 1.904382505185151508e-01
+eigen value  13: 2.089261663331694607e-01
+eigen value  14: 2.137404838137745844e-01
+eigen value  15: 2.137404838140256613e-01
+eigen value  16: 3.443741315515972956e-01
+eigen value  17: 4.416617380986914143e-01
+eigen value  18: 4.538070508337337938e-01
+eigen value  19: 4.538070508341729425e-01
+eigen value  20: 5.023358978165646249e-01
+eigen value  21: 5.096867608749067191e-01
+eigen value  22: 5.512952653063004638e-01
+eigen value  23: 5.709158433167024205e-01
+eigen value  24: 6.574136188827516269e-01
+eigen value  25: 6.574136189333801283e-01
+eigen value  26: 6.765254939645244381e-01
+eigen value  27: 7.056260767186274263e-01
+eigen value  28: 7.056260774750808817e-01
+eigen value  29: 7.338686217474131857e-01
+eigen value  30: 7.648557518277592226e-01
+eigen value  31: 7.770620676974820951e-01
+eigen value  32: 7.770642821906803555e-01
+eigen value  33: 7.793491184947072270e-01
+eigen value  34: 8.284886580651789068e-01
+eigen value  35: 8.456353454057132790e-01
+eigen value  36: 8.683645217492975688e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402040863072e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 1.042840973946838467e-10
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:1.042840973946838467e-10
+Beginning Chebyshev filter pass 16 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6836452175e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.010e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.345272506970939830e-14
+eigen vector 1: 7.347431384907719629e-14
+eigen vector 2: 7.148789681205072131e-14
+eigen vector 3: 4.639713007332654185e-14
+eigen vector 4: 3.885450398758758589e-14
+eigen vector 5: 6.206868738271243245e-14
+eigen vector 6: 6.452354400912409632e-14
+eigen vector 7: 5.637113705094783778e-14
+eigen vector 8: 6.782196105070876346e-14
+eigen vector 9: 6.881212540098482800e-14
+eigen vector 10: 6.506634192691818055e-14
+eigen vector 11: 6.424861240211668550e-14
+eigen vector 12: 1.220808340450998566e-13
+eigen vector 13: 2.239435034380757507e-13
+eigen vector 14: 9.691188049819466935e-14
+eigen vector 15: 1.753721406766073438e-13
+eigen vector 16: 1.639336453168732926e-11
+eigen vector 17: 5.279453362845556810e-10
+eigen vector 18: 3.518904604212978652e-10
+eigen vector 19: 2.025787706790208946e-10
+eigen vector 20: 1.440299743027601769e-09
+eigen vector 21: 6.916266921115485598e-10
+eigen vector 22: 3.573025644841350433e-09
+eigen vector 23: 7.954020415265755025e-09
+eigen vector 24: 4.735391631617891147e-08
+eigen vector 25: 1.260949844637083591e-06
+eigen vector 26: 2.061394448060313881e-06
+eigen vector 27: 5.086515007092388254e-07
+eigen vector 28: 5.122546815400959743e-06
+eigen vector 29: 1.654733064228429637e-06
+eigen vector 30: 1.059914744640461586e-04
+eigen vector 31: 7.023659718809599484e-05
+eigen vector 32: 2.862053353060886552e-04
+eigen vector 33: 2.964666740106119752e-04
+eigen vector 34: 2.201055007739822610e-03
+eigen vector 35: 6.449798998980145644e-03
+eigen vector 36: 8.044250035095804052e-03
+
+eigen value   0: -1.618037651670672261e+00
+eigen value   1: -7.631990182583691107e-01
+eigen value   2: -7.631990182580368209e-01
+eigen value   3: -7.502679532848837152e-01
+eigen value   4: -5.470206089054772125e-01
+eigen value   5: -3.777984753410142393e-01
+eigen value   6: -3.677737837365672724e-01
+eigen value   7: -1.907375358082757932e-02
+eigen value   8: -9.587562508818387591e-03
+eigen value   9: -9.587562508574688433e-03
+eigen value  10: 1.721711325512056134e-01
+eigen value  11: 1.721711325515540847e-01
+eigen value  12: 1.904382505185137631e-01
+eigen value  13: 2.089261663331687668e-01
+eigen value  14: 2.137404838137761942e-01
+eigen value  15: 2.137404838140252727e-01
+eigen value  16: 3.443741315515967960e-01
+eigen value  17: 4.416617380986925800e-01
+eigen value  18: 4.538070508337327391e-01
+eigen value  19: 4.538070508341732201e-01
+eigen value  20: 5.023358978165652911e-01
+eigen value  21: 5.096867608749069412e-01
+eigen value  22: 5.512952653063006858e-01
+eigen value  23: 5.709158433166995339e-01
+eigen value  24: 6.574136188827400806e-01
+eigen value  25: 6.574136188900520095e-01
+eigen value  26: 6.765254938563385334e-01
+eigen value  27: 7.056260767176389948e-01
+eigen value  28: 7.056260768774356151e-01
+eigen value  29: 7.338686217361539699e-01
+eigen value  30: 7.648555512028747394e-01
+eigen value  31: 7.770620587234700061e-01
+eigen value  32: 7.770629106025931376e-01
+eigen value  33: 7.793476139556551052e-01
+eigen value  34: 8.284249839684886263e-01
+eigen value  35: 8.456135667563933200e-01
+eigen value  36: 8.683629808720214616e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402040858076e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 1.639336453168732926e-11
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:1.639336453168732926e-11
+Beginning Chebyshev filter pass 17 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6836298087e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.119e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.535963208638044295e-14
+eigen vector 1: 7.193905336862986134e-14
+eigen vector 2: 7.544362558470379337e-14
+eigen vector 3: 5.240006548445658166e-14
+eigen vector 4: 4.153903253687177481e-14
+eigen vector 5: 6.111941765958717007e-14
+eigen vector 6: 6.075760346784352133e-14
+eigen vector 7: 5.956634346086310619e-14
+eigen vector 8: 6.916008013544347023e-14
+eigen vector 9: 6.893356329867528332e-14
+eigen vector 10: 6.506257417619457573e-14
+eigen vector 11: 6.281475873125554408e-14
+eigen vector 12: 6.399301148774219117e-14
+eigen vector 13: 6.971386104138886158e-14
+eigen vector 14: 6.500200942633333688e-14
+eigen vector 15: 6.772810734082763073e-14
+eigen vector 16: 2.576823647042917366e-12
+eigen vector 17: 1.058589602771529945e-10
+eigen vector 18: 7.286136429312215810e-11
+eigen vector 19: 4.194458754298769884e-11
+eigen vector 20: 3.405887440298922480e-10
+eigen vector 21: 1.664190093555697340e-10
+eigen vector 22: 9.740886459218106495e-10
+eigen vector 23: 2.301340018595051434e-09
+eigen vector 24: 5.511901288244824441e-08
+eigen vector 25: 4.821571379628504768e-07
+eigen vector 26: 8.490734219846280373e-07
+eigen vector 27: 2.312891746859584057e-07
+eigen vector 28: 2.353413847509126656e-06
+eigen vector 29: 8.450079992656847631e-07
+eigen vector 30: 6.217237218908026929e-05
+eigen vector 31: 4.305626777196719965e-05
+eigen vector 32: 1.773627116015199243e-04
+eigen vector 33: 1.856444559357686588e-04
+eigen vector 34: 1.751198580757769166e-03
+eigen vector 35: 5.605833301294441823e-03
+eigen vector 36: 7.975233366153487713e-03
+
+eigen value   0: -1.618037651670676258e+00
+eigen value   1: -7.631990182583695548e-01
+eigen value   2: -7.631990182580359328e-01
+eigen value   3: -7.502679532848832711e-01
+eigen value   4: -5.470206089054805432e-01
+eigen value   5: -3.777984753410155716e-01
+eigen value   6: -3.677737837365663287e-01
+eigen value   7: -1.907375358082888384e-02
+eigen value   8: -9.587562508818422286e-03
+eigen value   9: -9.587562508575255688e-03
+eigen value  10: 1.721711325512050583e-01
+eigen value  11: 1.721711325515537516e-01
+eigen value  12: 1.904382505185145680e-01
+eigen value  13: 2.089261663331694607e-01
+eigen value  14: 2.137404838137740293e-01
+eigen value  15: 2.137404838140247454e-01
+eigen value  16: 3.443741315515966295e-01
+eigen value  17: 4.416617380986938568e-01
+eigen value  18: 4.538070508337308517e-01
+eigen value  19: 4.538070508341736642e-01
+eigen value  20: 5.023358978165661792e-01
+eigen value  21: 5.096867608749060530e-01
+eigen value  22: 5.512952653062987984e-01
+eigen value  23: 5.709158433166989788e-01
+eigen value  24: 6.574136188827290894e-01
+eigen value  25: 6.574136188836473549e-01
+eigen value  26: 6.765254938379707816e-01
+eigen value  27: 7.056260767174351578e-01
+eigen value  28: 7.056260767511711718e-01
+eigen value  29: 7.338686217332104356e-01
+eigen value  30: 7.648554820484109174e-01
+eigen value  31: 7.770620553633670324e-01
+eigen value  32: 7.770623825694924491e-01
+eigen value  33: 7.793470234089666659e-01
+eigen value  34: 8.283844983656070138e-01
+eigen value  35: 8.455971371506524337e-01
+eigen value  36: 8.683616038414686544e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402040856411e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 2.576823647042917366e-12
+Maximum residual norm of the state closest to and below Fermi level for kpoint 0 spin 0:2.576823647042917366e-12
+Beginning Chebyshev filter pass 18 for spin 1
+kPoint: 0
+upper bound of unwanted spectrum:  8.8000000000e+02
+lower bound of unwanted spectrum:  8.6836160384e-01
+Chebyshev polynomial degree: 52
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 5.041e-03s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+L-2 Norm of residue   :
+eigen vector 0: 3.023402682768604074e-14
+eigen vector 1: 7.219453322017661088e-14
+eigen vector 2: 7.197357034734652207e-14
+eigen vector 3: 5.528178255666278378e-14
+eigen vector 4: 3.740900803708536444e-14
+eigen vector 5: 6.175043920825910722e-14
+eigen vector 6: 6.150221560852965174e-14
+eigen vector 7: 5.045533164481896341e-14
+eigen vector 8: 6.842654423160873727e-14
+eigen vector 9: 7.016368970647127457e-14
+eigen vector 10: 6.350689786736668504e-14
+eigen vector 11: 6.440043874950070186e-14
+eigen vector 12: 6.425021265893565658e-14
+eigen vector 13: 6.193436137397585563e-14
+eigen vector 14: 6.737069910066444623e-14
+eigen vector 15: 6.724845072483235234e-14
+eigen vector 16: 4.106620179314373262e-13
+eigen vector 17: 2.122074657069675853e-11
+eigen vector 18: 1.509253032086793143e-11
+eigen vector 19: 8.666336165170069762e-12
+eigen vector 20: 8.051899310573962590e-11
+eigen vector 21: 4.004792926119595275e-11
+eigen vector 22: 2.654876380425208307e-10
+eigen vector 23: 6.656765037114527454e-10
+eigen vector 24: 1.474314275839655629e-07
+eigen vector 25: 1.143594082105416555e-07
+eigen vector 26: 3.496156539227850995e-07
+eigen vector 27: 1.064189855224014624e-07
+eigen vector 28: 1.080737346679182181e-06
+eigen vector 29: 4.317019809960316181e-07
+eigen vector 30: 3.645306157719520454e-05
+eigen vector 31: 2.641556679244370191e-05
+eigen vector 32: 1.098504096167720744e-04
+eigen vector 33: 1.162080539397062538e-04
+eigen vector 34: 1.393066788716642657e-03
+eigen vector 35: 4.874578689871382313e-03
+eigen vector 36: 7.912168542308273614e-03
+
+eigen value   0: -1.618037651670674260e+00
+eigen value   1: -7.631990182583695548e-01
+eigen value   2: -7.631990182580368209e-01
+eigen value   3: -7.502679532848849364e-01
+eigen value   4: -5.470206089054785448e-01
+eigen value   5: -3.777984753410134622e-01
+eigen value   6: -3.677737837365670504e-01
+eigen value   7: -1.907375358082839117e-02
+eigen value   8: -9.587562508818684229e-03
+eigen value   9: -9.587562508575021500e-03
+eigen value  10: 1.721711325512049473e-01
+eigen value  11: 1.721711325515536961e-01
+eigen value  12: 1.904382505185147623e-01
+eigen value  13: 2.089261663331688224e-01
+eigen value  14: 2.137404838137747509e-01
+eigen value  15: 2.137404838140265495e-01
+eigen value  16: 3.443741315515970736e-01
+eigen value  17: 4.416617380986924135e-01
+eigen value  18: 4.538070508337336273e-01
+eigen value  19: 4.538070508341740528e-01
+eigen value  20: 5.023358978165654021e-01
+eigen value  21: 5.096867608749059420e-01
+eigen value  22: 5.512952653063013519e-01
+eigen value  23: 5.709158433167005331e-01
+eigen value  24: 6.574136188826110727e-01
+eigen value  25: 6.574136188828153538e-01
+eigen value  26: 6.765254938348544966e-01
+eigen value  27: 7.056260767173906379e-01
+eigen value  28: 7.056260767245206011e-01
+eigen value  29: 7.338686217324399408e-01
+eigen value  30: 7.648554582443487515e-01
+eigen value  31: 7.770620541024240158e-01
+eigen value  32: 7.770621796717606111e-01
+eigen value  33: 7.793467918182057641e-01
+eigen value  34: 8.283587839536399322e-01
+eigen value  35: 8.455847221565212513e-01
+eigen value  36: 8.683603616519169899e-01
+
+Fermi energy constraint residual (Newton-Raphson): 6.163958232718869112e-11
+Fermi energy                                     : 3.842805402040860852e-01
+Maximum residual norm among all states with occupation number greater than 1e-3: 4.106620179314373262e-13
+Fermi Energy computed: 3.842805402040860852e-01
+Time for compute rho on Device: 7.551939000000729152e-03
+Time for compute rho on Device: 3.813106000000843210e-03
+compute rho, wall time: 0.0222372s.
+
+number of electrons: 3.399990717134589602e+01
+***********************Self-Consistent-Field Iteration:  1 complete**********************
+Wall time for the above scf iteration: 2.541360156000000092e+00 seconds
+Number of Chebyshev filtered subspace iterations: 18
+
+DFT-FE Warning: SCF iterations did not converge to the specified tolerance after: 1 iterations.
+
+Poisson solve for total electrostatic potential (rhoOut+b): Time for compute rhsHost and copy to Device: 3.647208000000290440e-03
+
+initial abs. residual in Device: 3.285356784344187098e+00 , current abs. residual in Device: 9.053655524175025490e-11 , nsteps: 340 , abs. tolerance criterion in Device:  1.000000000000000036e-10
+
+Time for Device Poisson/Helmholtz problem CG iterations: 7.570534099999903788e-02
+phiTot solve, wall time: 0.0818042s.
+ Printing KS eigen values (spin split if this is a spin polarized calculation ) and fractional occupancies for kPoint 0
+  
+0 : -1.618037651670674260e+00       1.000000000000000000e+00
+1 : -7.631990182583695548e-01       1.000000000000000000e+00
+2 : -7.631990182580368209e-01       1.000000000000000000e+00
+3 : -7.502679532848849364e-01       1.000000000000000000e+00
+4 : -5.470206089054785448e-01       1.000000000000000000e+00
+5 : -3.777984753410134622e-01       1.000000000000000000e+00
+6 : -3.677737837365670504e-01       1.000000000000000000e+00
+7 : -1.907375358082839117e-02       1.000000000000000000e+00
+8 : -9.587562508818684229e-03       1.000000000000000000e+00
+9 : -9.587562508575021500e-03       1.000000000000000000e+00
+10 : 1.721711325512049473e-01       1.000000000000000000e+00
+11 : 1.721711325515536961e-01       1.000000000000000000e+00
+12 : 1.904382505185147623e-01       1.000000000000000000e+00
+13 : 2.089261663331688224e-01       1.000000000000000000e+00
+14 : 2.137404838137747509e-01       1.000000000000000000e+00
+15 : 2.137404838140265495e-01       1.000000000000000000e+00
+16 : 3.443741315515970736e-01       9.999999999886624025e-01
+17 : 4.416617380986924135e-01       1.826244317229364978e-16
+18 : 4.538070508337336273e-01       8.518401947065796414e-20
+19 : 4.538070508341740528e-01       8.518401944696410266e-20
+20 : 5.023358978165654021e-01       4.168006844394288128e-33
+21 : 5.096867608749059420e-01       4.015532660827170245e-35
+22 : 5.512952653063013519e-01       1.553875100443948858e-46
+23 : 5.709158433167005331e-01       6.455192797713155472e-52
+24 : 6.574136188826110727e-01       1.217336483315369234e-75
+25 : 6.574136188828153538e-01       1.217336483158325371e-75
+26 : 6.765254938348544966e-01       6.973168642176383197e-81
+27 : 7.056260767173906379e-01       7.273772959883469130e-89
+28 : 7.056260767245206011e-01       7.273772927130130158e-89
+29 : 7.338686217324399408e-01       1.304460208494458085e-96
+30 : 7.648554582443487515e-01       4.134292409700367687e-105
+31 : 7.770620541024240158e-01       1.855204483339561585e-108
+32 : 7.770621796717606111e-01       1.855057365290700342e-108
+33 : 7.793467918182057641e-01       4.382650759559916344e-109
+34 : 8.283587839536399322e-01       1.580486273548942105e-122
+35 : 8.455847221565212513e-01       2.979082729528705661e-127
+36 : 8.683603616519169899e-01       1.687366683598141401e-133
+============================================================================================================
+
+Energy computations (Hartree)
+-------------------------------------------------------------------------------
+Band energy                                         :  -7.4199672138466202e+00
+Kinetic energy plus nonlocal PSP energy             :   4.7638368635933446e+01
+Exchange energy                                     :  -1.6002233812686288e+01
+Correlation energy                                  :  -2.0035313660625511e+00
+Local PSP Electrostatic energy                      :  -1.4410948621667703e+02
+Total internal energy                               :  -1.1447688275949241e+02
+Total internal energy per atom                      :  -2.8619220689873103e+01
+-------------------------------------------------------------------------------
+Total entropic energy: 0.000000000000000000e+00
+Total free energy: -1.144768827594924119e+02
+scf solve, wall time: 2.75724s.
+Total scf solve, wall time: 2.75728s.
+
+------------------DFT-FE ground-state solve completed---------------------------
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 1.322e+01s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
+| Atomic system initialization    |         1 | 1.153e+00s |  8.72e+00% |
+| Init local PSP                  |         1 | 3.088e-01s |  2.34e+00% |
+| KSDFT problem initialization    |         1 | 7.853e+00s |  5.94e+01% |
+| Nuclear self-potential solve    |         1 | 8.625e-01s |  6.52e+00% |
+| Total scf solve                 |         1 | 2.757e+00s |  2.09e+01% |
+| initialize density              |         1 | 1.223e+00s |  9.25e+00% |
++---------------------------------+-----------+------------+------------+
+
+
+
++--------------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start         | 1.322e+01s |            |
+|                                                  |            |            |
+| Section                              | no. calls |  wall time | % of total |
++--------------------------------------+-----------+------------+------------+
+| Create atom bins                     |         1 | 7.322e-01s |  5.54e+00% |
+| Hamiltonian Matrix Computation       |         1 | 6.357e-02s |  4.81e-01% |
+| Nuclear self-potential solve         |         1 | 8.625e-01s |  6.52e+00% |
+| VEff Computation                     |         1 | 3.784e-02s |  2.86e-01% |
+| compute rho                          |         1 | 2.224e-02s |  1.68e-01% |
+| density mixing                       |         1 | 9.240e-07s | 0.000e+00% |
+| image charges and k point generation |         1 | 1.822e+00s |  1.38e+01% |
+| init electronic fields               |         1 | 1.254e+00s |  9.48e+00% |
+| initialize wave functions            |         1 | 2.265e-02s |  1.71e-01% |
+| kohnShamDFTOperator init             |         1 | 1.007e-03s | 0.000e+00% |
+| mesh generation                      |         1 | 6.146e-02s |  4.65e-01% |
+| moved setup                          |         1 | 2.683e+00s |  2.03e+01% |
+| phiTot solve                         |         2 | 1.688e-01s |  1.28e+00% |
+| psp init                             |         1 | 1.924e+00s |  1.46e+01% |
+| scf solve                            |         1 | 2.757e+00s |  2.09e+01% |
+| unmoved setup                        |         1 | 4.000e-02s |  3.03e-01% |
++--------------------------------------+-----------+------------+------------+
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 1.322e+01s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+
+
++---------------------------------------------+------------+------------+
+| Total wallclock time elapsed since start    | 1.322e+01s |            |
+|                                             |            |            |
+| Section                         | no. calls |  wall time | % of total |
++---------------------------------+-----------+------------+------------+
++---------------------------------+-----------+------------+------------+
+
+=============================================================================================
+DFT-FE Program ends. Elapsed wall time since start of the program: 1.430978117499999946e+01 seconds.
+=============================================================================================
