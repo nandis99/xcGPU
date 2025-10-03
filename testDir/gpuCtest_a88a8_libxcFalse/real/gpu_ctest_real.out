@@ -1,0 +1,4 @@
+Number of Nodes Allocated      = 1
+Number of Tasks Allocated      = 18
+Number of Cores/Task Allocated = 
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads

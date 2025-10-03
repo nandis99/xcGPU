@@ -1,0 +1,291 @@
+
+Lmod is automatically replacing "nvidia/24.11" with "gcc-native/14.2".
+
+
+Lmod is automatically replacing "PrgEnv-nvidia/8.6.0" with "PrgEnv-gnu/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.32
+
+./set_affinity_gpu_polaris.sh: line 7: exec: BaTiO3_scf_pbe.prm: not found
+./set_affinity_gpu_polaris.sh: line 7: exec: BaTiO3_scf_pbe.prm: not found
+./set_affinity_gpu_polaris.sh: line 7: exec: BaTiO3_scf_pbe.prm: not found
+./set_affinity_gpu_polaris.sh: line 7: exec: BaTiO3_scf_pbe.prm: not found
+x3007c0s1b1n0.hsn.cm.polaris.alcf.anl.gov: rank 20 exited with code 127
+x3007c0s13b0n0.hsn.cm.polaris.alcf.anl.gov: rank 1 died from signal 15
+./set_affinity_gpu_polaris.sh: line 7: exec: BaTiO3_scf_r2scan.prm: not found
+x3007c0s13b0n0.hsn.cm.polaris.alcf.anl.gov: rank 3 exited with code 127
+x3007c0s13b0n0.hsn.cm.polaris.alcf.anl.gov: rank 0 died from signal 15
+
+Lmod is automatically replacing "nvidia/24.11" with "gcc-native/14.2".
+
+
+Lmod is automatically replacing "PrgEnv-nvidia/8.6.0" with "PrgEnv-gnu/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.32
+
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+GTL_DEBUG: [0] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [20] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [24] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [28] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [8] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [12] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [16] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [4] cudaHostUnregister: pointer does not correspond to a registered memory region
+x3007c0s19b1n0.hsn.cm.polaris.alcf.anl.gov: rank 14 exited with code 255
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+
+Lmod is automatically replacing "nvidia/24.11" with "gcc-native/14.2".
+
+
+Lmod is automatically replacing "PrgEnv-nvidia/8.6.0" with "PrgEnv-gnu/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.32
+
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+GTL_DEBUG: [0] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [24] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [20] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [28] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [16] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [8] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [12] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [4] cudaHostUnregister: pointer does not correspond to a registered memory region
+x3007c0s13b1n0.hsn.cm.polaris.alcf.anl.gov: rank 7 exited with code 255
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+GTL_DEBUG: [0] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [20] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [24] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [28] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [16] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [8] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [12] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [4] cudaHostUnregister: pointer does not correspond to a registered memory region
+x3007c0s13b0n0.hsn.cm.polaris.alcf.anl.gov: rank 2 exited with code 255
+
+Lmod is automatically replacing "nvidia/24.11" with "gcc-native/14.2".
+
+
+Lmod is automatically replacing "PrgEnv-nvidia/8.6.0" with "PrgEnv-gnu/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.32
+
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+GTL_DEBUG: [0] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [8] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [20] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [16] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [4] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [12] cudaHostUnregister: pointer does not correspond to a registered memory region
+x3007c0s1b1n0.hsn.cm.polaris.alcf.anl.gov: rank 23 exited with code 255
+
+Lmod is automatically replacing "nvidia/24.11" with "gcc-native/14.2".
+
+
+Lmod is automatically replacing "PrgEnv-nvidia/8.6.0" with "PrgEnv-gnu/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.32
+
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+GTL_DEBUG: [0] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [12] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [24] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [28] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [20] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [4] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [8] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [16] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [0] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [28] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [20] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [24] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [16] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [8] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [4] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [12] cudaHostUnregister: pointer does not correspond to a registered memory region
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+ WARNING elpa_setup: MPI threading level MPI_THREAD_SERALIZED or MPI_THREAD_MULTIPLE required but your implementation does not support this! The number of OpenMP threads within ELPA will be limited to 1
+GTL_DEBUG: [0] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [20] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [24] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [4] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [28] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [8] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [12] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [16] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [0] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [20] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [28] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [24] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [16] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [4] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [12] cudaHostUnregister: pointer does not correspond to a registered memory region
+GTL_DEBUG: [8] cudaHostUnregister: pointer does not correspond to a registered memory region
