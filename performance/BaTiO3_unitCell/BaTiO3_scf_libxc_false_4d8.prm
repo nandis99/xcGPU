@@ -15,8 +15,8 @@ subsection Boundary conditions
 end
 
 subsection Brillouin zone k point sampling options
-  #set USE GROUP SYMMETRY         = true
-  #set USE TIME REVERSAL SYMMETRY = true
+  set USE GROUP SYMMETRY         = true
+  set USE TIME REVERSAL SYMMETRY = true
   subsection Monkhorst-Pack (MP) grid generation
     set SAMPLING POINTS 1 = 1
     set SAMPLING POINTS 2 = 1
@@ -29,9 +29,9 @@ end
 
 subsection Finite element mesh parameters
   set POLYNOMIAL ORDER = 7
-  set DENSITY QUADRATURE RULE = 14
+  set DENSITY QUADRATURE RULE = 20
   subsection Auto mesh generation parameters
-    set MESH SIZE AROUND ATOM = 1.2
+    set MESH SIZE AROUND ATOM = 0.6
     set ATOM BALL RADIUS = 8
   end
 end
@@ -47,7 +47,6 @@ subsection SCF parameters
   set TEMPERATURE  = 500
   set TOLERANCE  = 1e-6
   set MIXING METHOD = ANDERSON
-  set USE ENERGY RESIDUAL METRIC  = true
   subsection Eigen-solver parameters
     set USE SINGLE PREC CHEBY = true
   end 

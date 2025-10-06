@@ -1,0 +1,19 @@
+#!/bin/bash
+base1=/home/srinibasn/xcGPU/testDir/gpu_c6f15/testsGPU_libxcFalse/pseudopotential/complex
+base2=/home/srinibasn/xcGPU/testDir/gpu_c6f15/testsGPU_libxcFalse/pseudopotential/complex/accuracyBenchmarks
+for file in $base1/output*; do
+    filename=$(basename "$file")
+    tmp1="./${filename}.tmp1"
+    tmp2="./${filename}.tmp2"
+    grep -v -e '^Found' -e '^MPI' "$file" > "$tmp1"
+    grep -v -e '^Found' -e '^MPI' "$base2/$filename" > "$tmp2"
+    diff -u -U0 -P "$tmp1" "$tmp2" > "${filename}.diff"
+    # Add vim diff command at the top with full paths
+    sed -i "1icode --diff $file $base2/$filename" "${filename}.diff"
+    rm "$tmp1" "$tmp2"
+    if [ ! -s "${filename}.diff" ]; then
+        rm "${filename}.diff"
+    else
+        echo "${filename}"
+    fi 
+done

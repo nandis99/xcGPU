@@ -1,0 +1,224 @@
+Number of Nodes Allocated      = 1
+Number of Tasks Allocated      = 18
+Number of Cores/Task Allocated = 
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+AtomId 41:  8.408494498999999900e-01ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ CUBLAS version:       120604
+ NVIDIA maxThreadsPerBlock:         1024
+ NVIDIA MaxBLockDimX:         1024
+ NVIDIA MaxBLockDimY:         1024
+ NVIDIA MaxBLockDimZ:           64
+ NVIDIA MaxGridDimX:   2147483647
+ NVIDIA MaxGridDimY:        65535
+ NVIDIA MaxGridDimZ:        65535
+ NVIDIA SM count:           80
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
+ELPA: Default for option 'omp_threads' is set to '1' due to environment variable ELPA_DEFAULT_omp_threads
